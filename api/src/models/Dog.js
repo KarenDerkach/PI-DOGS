@@ -3,11 +3,12 @@ const { DataTypes } = require('sequelize');
 // Luego le injectamos la conexion a sequelize.
 module.exports = (sequelize) => {
   // defino el modelo
-  sequelize.define('Dog', {
+  sequelize.define('dog', {
     id:{
       type: DataTypes.UUID, //sequlize te da un ID random, sirve p/ q cuando llame al id mediante la url no se pise con el de la base de datos
       primaryKey: true,
       allowNull: false,
+      defaultValue: DataTypes.UUIDV4
     },
     name: {
       type: DataTypes.STRING,
@@ -28,7 +29,7 @@ module.exports = (sequelize) => {
     createInBd:{
       type: DataTypes.BOOLEAN,
       allowNull: false,
-      defaultValue: false,
+      defaultValue: true,
     },
   },{timestamps: false});
 };
