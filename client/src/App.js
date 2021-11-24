@@ -1,12 +1,18 @@
-import './App.css';
-import {BrowserRouter as Router, Route, Link} from 'react-router-dom';
+//import { Main } from './globalStyled.js'
+import React from 'react';
+import { Routes, Route } from 'react-router-dom';
+import LandingPage from './components/LandingPage';
+import Home from './components/Home';
+
+
 function App() {
   return (
-    <Router>
-    <div className="App">
-      <h1>Henry Dogs</h1>
-    </div>
-    </Router>
+    <React.Fragment>
+    <Routes>
+      <Route exact path="/" element={<LandingPage/>}/>
+      <Route  path="/home" element={<Home/>}/>
+    </Routes>
+    </React.Fragment>
   );
 }
 

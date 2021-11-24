@@ -5,7 +5,7 @@ module.exports = (sequelize) => {
   // defino el modelo
   sequelize.define('dog', {
     id:{
-      type: DataTypes.UUID, //sequlize te da un ID random, sirve p/ q cuando llame al id mediante la url no se pise con el de la base de datos
+      type: DataTypes.UUID, //sequlize te da un ID random, sirve p/ q cuando llame al id mediante la url no se pise con el de la base de datos//PARA EVITAR COLISIONES
       primaryKey: true,
       allowNull: false,
       defaultValue: DataTypes.UUIDV4
