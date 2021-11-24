@@ -7,7 +7,9 @@ import CardDog from './CardDog'
 import Paginado from './Paginado'
 
 export default function Home() {
+
     const dispatch = useDispatch()   //HOOK reemplaza mapDispatchToProps
+ //////////////////////////////////////////////ESTADOS LOCALES//////////////////////////////////////////////////////////////////   
     const allDogs = useSelector(state => state.dogs) //HOOK reemplaza mapStateToProps
     const temperaments = useSelector(state => state.temperaments)
     .sort((a,b) =>{if(a < b) return -1; else return 1;})
@@ -76,7 +78,7 @@ export default function Home() {
                 </div>
 
                 <div>
-                <h5>Weight</h5>
+                <h5>Peso</h5>
                 <select onChange={(e)=> handleOrderByWeight(e)}>  
                     <option value='asc'>Ascendente</option>
                     <option value='desc'>Descendente</option>

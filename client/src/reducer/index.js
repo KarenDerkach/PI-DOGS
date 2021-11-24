@@ -15,7 +15,7 @@ export default function rootReducer(state = initialState, action) {
         case 'GET_TEMPERAMENTS': 
             return {
                 ...state,
-                dogs: action.payload
+                temperaments: action.payload
             }
         case 'FILTER_DOGS_BY_USER':
             const allDogsAPI = state.allDogs
