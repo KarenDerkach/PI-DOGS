@@ -1,60 +1,11 @@
-const { Router } = require('express');
-const router = Router();
-//INSTALO MODULO AXIOS
-const axios = require('axios');
+const express = require('express');
+const router = express.Router();
 //TRAIGO LOS MODELOS
 const { Dog, Temperament } = require('../db.js');
-
-//TRAIGO LA API_KEY
-const { API_KEY }= process.env;
-
+const {getAllDogs, getDogsAPI, getDogsDB } = require('./Controllers')
+router.use(express.json())
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
-
-//********************CREO FUNCIONES CONTROLADORAS QUE ME VAN A TRAER INFO DE LA DB Y DE LA API****************** */
-const getDogsDB = async () =>{
-    return await Dog.findAll({
-        include: {
-            model: Temperament, //incluyo el modelo Temperament porq el modelo DOG no lo tiene
-            atributes: ['name'],
-            through: {//es una validacion donde se constata que traiga los atributos de la tabla Temperament   
-                atributes:[]
-            },
-        }  
-     })
-}
-// console.log(getDogsDB());
-
-const getDogsAPI = async () => {
-    const getData = await axios.get('https://api.thedogapi.com/v1/breeds', { headers: {'x-api-key': `${API_KEY}` }})
-    const dataAPI = await getData.data.map(elem => {
-           return{
-            id: elem.id,
-            name: elem.name,
-            image: elem.image.url,
-            temperament: elem.temperament,
-            weight: elem.weight.metric,
-            height: elem.height.metric,
-            life_span: elem.life_span,
-            breed_group: elem.breed_group,
-           } 
-    })
-    //console.log(dataAPI);
-    return dataAPI;  
-} 
-
-
-// unimos las dos informaciones
-const getAllDogs = async () => {
-    let getInfoDB = await getDogsDB();
-    let getInfoAPI = await getDogsAPI();
-    let allDogs = await getInfoDB.concat(getInfoAPI); // concatena las dos arrays
-   
-    return allDogs;
-}
-//console.log(getAllDogs());
-
-//******************************************************************************************************* */
 
 //************RUTAS************************ */
 //  GET /dogs:
@@ -124,7 +75,11 @@ router.get('/temperament', async (req, res) => {
             }
         })
     }
-    const allTemperaments = await Temperament.findAll();
+    const allTemperaments = await Temperament.findAll({
+        order: [
+            ['name', 'ASC']
+        ]
+    });
     res.status(200).send(allTemperaments);
 }catch(error){
     res.status(404).send(error);}
@@ -137,23 +92,24 @@ Recibe los datos recolectados desde el formulario controlado de la ruta de creac
 Crea una raza de perro en la base de datos */
 
 router.post('/dog', async (req,res) => {
-    let { name, height, weight, life_span, createInBd, temperament } = req.body; //datos del formulario controlado
-    if(name && height && weight && life_span && createInBd && temperament){
+    let { name, height_min, height_max, weight_min, weight_max, life_span, createInBd, temperament } = req.body; //datos del formulario controlado
+    if(name && height_min && height_max && weight_min && weight_max && life_span && temperament){
     let dogsCreate = await Dog.create({
-        name,
-        height,
-        weight,
-        life_span,
-        createInBd
+        name: name,
+        height_min: parseInt(height_min),
+        height_max: parseInt(height_max),
+        weight_min: parseInt(weight_min),
+        weight_max: parseInt(weight_max),
+        life_span: life_span,
+        createInBd: createInBd,
     })
-    let findTemperamentDB = await Temperament.findAll({
-        where:{name : temperament}
-    })
+    let findTemperamentDB = await Temperament.findAll({ where:{name: temperament} })
     dogsCreate.addTemperament(findTemperamentDB); //agrego al perro creado el temperamento que selecciono el usuario
-    res.status(200).send('Dogs created successfully!')
+    res.status(200).send(dogsCreate)
     }else{
         res.status(404).send('Please, complete all the fields')
     }
 })
+
 
 module.exports = router;

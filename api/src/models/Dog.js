@@ -14,12 +14,20 @@ module.exports = (sequelize) => {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    height:{
-      type: DataTypes.STRING, //Respeto la forma en por como m viene en la base de datos
+    height_min:{
+      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
       allowNull: false,
     },
-    weight:{
-      type: DataTypes.STRING, //Respeto la forma en por como m viene en la base de datos
+    height_max:{
+      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
+      allowNull: false,
+    },
+    weight_min:{
+      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
+      allowNull: false,
+    },
+    weight_max:{
+      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
       allowNull: false,
     },
     life_span:{

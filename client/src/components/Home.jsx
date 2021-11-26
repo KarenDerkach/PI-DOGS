@@ -1,17 +1,18 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {getDogs, filterDogsByUser, orderByName, orderByWeight, getListTemperaments} from '../actions/index'
+import {getDogs, filterDogsByUser, orderByName, orderByWeight} from '../actions/index'
 import { Link } from 'react-router-dom'
 import CardDog from './CardDog'
 import Paginado from './Paginado'
+import SearchBar from './SearchBar'
 
 export default function Home() {
 
     const dispatch = useDispatch()   //HOOK reemplaza mapDispatchToProps
- //////////////////////////////////////////////ESTADOS LOCALES//////////////////////////////////////////////////////////////////   
+ //////////////////////////////////////////////ESTADOS GLOBALES//////////////////////////////////////////////////////////////////   
     const allDogs = useSelector(state => state.dogs) //HOOK reemplaza mapStateToProps
-    const temperaments = useSelector(state => state.temperaments)
+    
     .sort((a,b) =>{if(a < b) return -1; else return 1;})
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -29,7 +30,7 @@ export default function Home() {
 
     useEffect(() => {  //HOOK para ejecutar una funcion cuando el componente se monta
         dispatch(getDogs());
-        dispatch(getListTemperaments());
+        
 
     },[dispatch])
 
@@ -53,77 +54,74 @@ export default function Home() {
         e.preventDefault(); //permite q no se recargue la pagina y se rompan las cosas
         dispatch(orderByWeight(e.target.value));
     }
+    
 
-    function handleGetTemperaments(e) {
-        e.preventDefault(); //permite q no se recargue la pagina y se rompan las cosas
-        dispatch(getListTemperaments(e.target.value));
-    }
+    
 //////////////////////////////////////////////////////EVENTS////////////////////////////////////////////////////////////////////
     return (
         <div>
             <Link to='/dogs'>Crear Mascota</Link>
             <h1>Bienvenidos al Mundo de las Mascotas</h1>
             <button onClick={e=>{handleClick(e)}}> {/*si el usuario tiene un filtro y quiere ver todo de nuevo. con este boton resetea todo y muestra todo original*/}
-                Volver a cargar todos los personajes
+                Refresh
             </button>
             <div>
+                <div>
+                <SearchBar />
+                </div>
+                
                 <h3>Ordenar por:</h3>{/* Botones/Opciones para ORDENAR tanto ascendentemente como descendentemente las razas de perro por: Orden alfabético, Peso*/}
 
                 <div>
                 <h5>Nombre</h5>
                 <select onChange={(e)=> handleOrderByName(e)}>  
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
+                    <option value='asc'>A - Z</option>
+                    <option value='desc'>Z - A</option>
                 </select>
                 </div>
 
                 <div>
                 <h5>Peso</h5>
                 <select onChange={(e)=> handleOrderByWeight(e)}>  
-                    <option value='asc'>Ascendente</option>
-                    <option value='desc'>Descendente</option>
+                    <option value='asc'>Liviano</option>
+                    <option value='desc'>Pesado</option>
                 </select>
                 </div>
-
+                
+                
                 <h3>Filtrar por:</h3> {/* Botones/Opciones para FILTRAR las razas de perro por:Temperamento, Raza existente (API o BD)*/}
-               
-                <div>
-                    <h5>Temperamento:</h5>
-                <select onChange={(e)=> handleGetTemperaments(e)}> 
-                    <option> Temperamentos </option>
-                    {
-                        temperaments.map(temperament => {
-                            return (
-                                <option key={temperament} value={temperament}>{temperament}</option>
-                            )
-                        }
-                        )
-                    }
-                </select>
-                </div>
 
                 <select onChange={(e)=> handlefilterDogsByUser(e)}>
                     <option value='api' >Razas Existentes</option>
                     <option value='created' >Razas Creadas</option>
                     <option defaultValue value='all' >Todas las Razas</option>
                 </select>
-                <Paginado
-                    dogsPerPage={dogsPerPage}
-                    allDogs={allDogs.length}
-                    paginate={paginate}
-                />
-                
-                {
+               
+               
+               <div>
+
+                   <h5>Lista Animales: </h5>
+               {
                     currentDogs && currentDogs.map(dog => {
                       return (
                           <fragment>
                               <Link to={`/dogs/${dog.id}`}>
-                      <CardDog key={dog.id} name={dog.name} temperament={dog.temperament} image={dog.image} />
+                      <CardDog key={dog.id} name={dog.name} temperament={dog.temperament} temperaments={dog.temperaments} image={dog.image} />
                                 </Link>
                         </fragment>
                          ) ;      
                     })
                 }
+             </div> 
+                
+            <div>
+            <Paginado
+                    dogsPerPage={dogsPerPage}
+                    allDogs={allDogs.length}
+                    paginate={paginate}
+                />
+            </div>
+               
                
             </div>
         </div>
