@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+
+.container {
+  margin-top: 2%;
+  margin-left: 10%;
+  margin-right: 20%;
+  padding: 3%;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 2fr;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 6px 7px 8px -6px rgba(0, 0, 0, 0.75);
+  border-radius: 47px;
+  background: #ff9736a9;
+  box-shadow: 6px 6px 31px #949494, -6px -6px 31px #ffffff;
+  color: white;
+}
+h1 {
+  font-family: "Alfa Slab One", bold;
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bold;
+  color: #ff5c4d;
+}
+
+.form {
+  width: 500px;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  border-radius: 15px;
+}
+.section {
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid transparent;
+  border-radius: 15px;
+  gap: 5px;
+  box-shadow: 6px 7px 8px -6px rgba(0, 0, 0, 0.75);
+}
+
+h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+.font {
+  width: 100%;
+}
+
+.selectTemp {
+  width: 90%;
+  height: 30px;
+  background-color: rgba(228, 228, 207, 0);
+  border-radius: 15px;
+  border: none;
+  outline: none;
+  margin: 5px 8px;
+  padding: 3px 10px;
+  cursor: pointer;
+  font-family: "fredoka one", sans-serif;
+}
+
+.temps {
+  font-size: 15px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #ff5c4d;
+  display: flex;
+}
+
+.boxSelectTemp {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  background-color: #ffcd58dc;
+  border-radius: 15px;
+  gap: 5px;
+  margin: 5px 8px;
+  padding: 3px 10px;
+  font-family: "fredoka one", sans-serif;
+  width: 90%;
+  position: relative;
+}
+
+.btnDelete {
+  border: solid 1px transparent;
+  border-radius: 10000px;
+  width: 2rem;
+  height: 2rem;
+  font-size: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  transition: background-color 0.25s;
+  cursor: pointer;
+  color: #fff;
+}
+.btnDelete:hover {
+  background-color: #e70d0d;
+  color: white;
+}
+
+.error {
+  color: red;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.input {
+  border: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0);
+  background-color: transparent;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+
+input::placeholder {
+  background-color: transparent;
+  color: white;
+  font-size: 1rem;
+}
+.input::placeholder :active{
+  background-color: #ff9736a9;
+  color: white;
+  font-size: 1rem;
+}
+.imgDog {
+  width: 100%;
+  height: 95%;
+  object-fit: cover;
+  box-shadow: 6px 7px 10px 0px rgb(0 0 0 / 50%);
+  overflow: hidden;
+  grid-area: 1/1/6/2;
+  border-radius: 20px;
+}
+
+.btnCreate {
+  min-width: 90%;
+  height: 40px;
+  color: #fff;
+  padding: 5px 10px;
+  font-weight: bold;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: none;
+  background: #ff5c4d;
+  margin-left: 30px;
+}
+.btnCreate:hover {
+  background: #fff;
+  color: #ffd819;
+}
+
+.btnReturn {
+  min-width: 130px;
+  height: 50px;
+  text-align: center;
+  color: #fff;
+  font-size: large;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 20px;
+  margin-left: 400px;
+  display: inline-block;
+  outline: none;
+  border-radius: 5px;
+  border: 2px solid #ffd819;
+  background: #ffd819;
+}
+.btnReturn:hover {
+  background: #fff;
+  color: #ffd819;
+}

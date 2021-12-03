@@ -1,6 +1,7 @@
 import React from 'react'
+import styles from './styless/Pagination.module.css'
 //componente que renderiza el paginado
-function Paginado({paginate, dogsPerPage, allDogs}) {
+function Pagination({paginate, dogsPerPage, allDogs, currentPage}) {
     const pageNumbers = [];
     for (let i = 1; i <= Math.ceil(allDogs / dogsPerPage); i++) {
         pageNumbers.push(i);
@@ -10,10 +11,10 @@ function Paginado({paginate, dogsPerPage, allDogs}) {
     return (
         <div>
             <nav>
-                <ul style={{display: 'flex', flexDirection:'row'}}>
+                <ul className={styles.container}>
                     {pageNumbers?.map(number => (
-                        <li key={number} style={{alignItems:'none'}} > 
-                            <button onClick={() => paginate(number)}>{number}</button>
+                        <li key={number} className={styles.number} > 
+                            <div className={currentPage === number? styles.crumb_active : styles.crumb }onClick={() => paginate(number)}>{number}</div>
                         </li>
                     ))}
                 </ul>       
@@ -23,4 +24,4 @@ function Paginado({paginate, dogsPerPage, allDogs}) {
     )
 }
 
-export default Paginado
+export default Pagination

@@ -1,12 +1,13 @@
+//INSTALO Y REQUIERO EL MODULO DE AXIOS
 const axios = require('axios');
-//TRAIGO LOS MODELOS
+//TRAIGO LOS MODELOS/ENTIDADES DE LA DB
 const { Dog, Temperament } = require('../db.js');
 //TRAIGO LA API_KEY
 const { API_KEY }= process.env;
 
 //********************CREO FUNCIONES CONTROLADORAS QUE ME VAN A TRAER INFO DE LA DB Y DE LA API****************** */
 const getDogsDB = async () =>{
-    var infoDB= await Dog.findAll({
+    var infoDB = await Dog.findAll({
         include: {
             model: Temperament, //incluyo el modelo Temperament porq el modelo DOG no lo tiene
             attributes: ['name'],
@@ -45,11 +46,11 @@ const getDogsAPI = async () => {
 const getAllDogs = async () => {
     let getInfoDB = await getDogsDB();
     let getInfoAPI = await getDogsAPI();
-    let allDogs = await getInfoDB.concat(getInfoAPI); // concatena las dos arrays
-   
+    let allDogs = await getInfoDB.concat(getInfoAPI);
+   //console.log(allDogs);
     return allDogs;
 }
-//console.log(getAllDogs());
+
 
 module.exports ={
     getAllDogs, getDogsAPI, getDogsDB

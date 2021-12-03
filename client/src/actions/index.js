@@ -1,22 +1,6 @@
 import axios from 'axios';
-//TRAIGO LA API_KEY
-//const { API_KEY }= process.env;
 
-//action qe permite buscar perros por nombre  (SearchBar)
-export function getNameDogs (name){
- return function(dispatch){
-     axios.get('http://localhost:3001/dogs?name='+ name)
-     .then((response)=>{
-            dispatch({
-                type: 'GET_DOGS_NAME',
-                payload: response.data
-            })
-     })
-        .catch((err)=>{
-            console.log(err);
-        })
- }
-}
+
 //action qe permite renderizar todos los perros (home)
 export function getDogs(){
     return function(dispatch){
@@ -25,10 +9,26 @@ export function getDogs(){
             dispatch({type:'GET_DOGS', payload: response.data})
         })
         .catch((err)=>{
-            console.log(err);
+            console.log('Error al cargar datos');
         })
     }
 }
+
+//action qe permite buscar perros por nombre  (SearchBar)
+export function getNameDogs (name){
+    return function(dispatch){
+        axios.get('http://localhost:3001/dogs?name='+ name)
+        .then((response)=>{
+               dispatch({
+                   type: 'GET_DOGS_NAME',
+                   payload: response.data
+               })
+        })
+           .catch(()=>{
+               alert("Raza no existente");
+           })
+    }
+   }
 
 export function postDog (info){ //recibe un objeto con toda la info del perro a crear (createDogs)
     return async function(dispatch){
@@ -45,35 +45,38 @@ export function getDetailsDogs(id){
             dispatch({type:'GET_DETAILS_DOG', payload: response.data})
         })
         .catch((err)=>{
-            console.log(err);
+            console.log('No se encuentra Id');
         })
     }
 }
 
 
-//accion para traer los temperamentos en un array
+
 export function getListTemperaments(){ //(CreateDogs) (HOME)
     return function(dispatch){
         axios.get('http://localhost:3001/temperament')
         .then((response)=>{
-            var arrTemps = response.data.map(e => e.name)
-            return arrTemps
+            dispatch({type:'GET_TEMPERAMENTS', payload: response.data})
         }) 
-        .then((arrTemps)=>{
-            dispatch({type:'GET_TEMPERAMENTS', payload: arrTemps})
-        })
-        .catch((err)=>{ console.log(err)})
+        .catch((err)=>{ alert('Error al traer temperamentos')})
     }
 }
 
+export function filterDogsByTemperament(payload){
+    return{
+        type: 'FILTER_DOGS_BY_TEMPERAMENT',
+        payload
+    }
+}
 
 //accion para filtrar los perros creados por el usuario
-export function filterDogsByUser(value){
+export function filterDogsByCreated(value){
     return {
-        type: 'FILTER_DOGS_BY_USER',
+        type: 'FILTER_DOGS_BY_CREATED',
         payload: value
     }
 }
+
 
 export function orderByName(payload){
     return {

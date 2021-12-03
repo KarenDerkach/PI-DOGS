@@ -1,16 +1,25 @@
 import React from 'react'
 import {useState} from 'react'
-import {useDispatch, useSelector} from 'react-redux'
-import { getNameDogs } from '../actions/index'
+import {useDispatch} from 'react-redux'
+import {getDogs, getNameDogs } from '../actions/index'
+import styles from './styless/SearchBar.module.css' 
+//ICONS
+import {ImSearch} from 'react-icons/im'
 
 function SearchBar() {
     const dispatch = useDispatch()
     const [name, setName] = useState('')
+   
+
+    const handleClick= (e)=> {
+        e.preventDefault();
+        dispatch(getDogs());
+      }
     
     const handleChange = (e) => {
      e.preventDefault()
      setName(e.target.value)
-     console.log(name)
+     //console.log(name)
     }
 
     const handleSubmit = (e) => {
@@ -20,9 +29,14 @@ function SearchBar() {
     }
 
     return (
-        <div>
-            <input type="text" placeholder="Buscar ..." value={name} onChange={(e) => handleChange(e)}/>
-            <button type='submit' onClick={(e)=> handleSubmit(e)}>Buscar</button>
+        <div className={styles.container}>
+            <div>
+            <input  type="text" placeholder="Name ..." value={name} onChange={(e) => handleChange(e) }/>
+            <button type='submit' onClick={(e)=> handleSubmit(e)} className={styles.search}><ImSearch/></button>
+            </div>
+            <div>
+            <button onClick={(e) => {handleClick(e)}}  className={styles.refresh}>  Refresh  </button>
+            </div>
         </div>
     )
 }

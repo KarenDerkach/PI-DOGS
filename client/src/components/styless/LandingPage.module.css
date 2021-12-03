@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+
+.background{
+    background-image: url('./.././..//img/landing_2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 40% 60%;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.title{
+    margin-bottom: 10px;
+    margin-top: -50;
+    margin-top: -50;
+    font-family: 'Alfa Slab One', bold;
+    font-size: 3rem;
+    color:  white;
+    text-shadow: 2px 2px #000;
+
+}
+
+.subtitle{
+    margin-bottom: 25%;
+    font-family: 'Alfa Slab One', cursive;
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px #000;
+}
+.button {
+    top: 250px;
+    left: 600px;
+    margin-top: 50px;
+    min-width: 130px;
+    height: 40px;
+    color: #fff;
+    padding: 5px 10px;
+    font-weight: bold;
+    font-size: large;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: absolute;
+    display: inline-block;
+    outline: none;
+    border-radius: 500px;
+    border: 2px solid #fff;
+    background: transparent;
+    margin-bottom: 200px;
+    margin-right: 100px;
+  }
+  .button:hover {
+    background: #fff;
+    color: #495057
+  }
+   
+   

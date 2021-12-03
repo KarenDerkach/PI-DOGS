@@ -15,19 +15,19 @@ module.exports = (sequelize) => {
       allowNull: false,
     },
     height_min:{
-      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
+      type: DataTypes.INTEGER, 
       allowNull: false,
     },
     height_max:{
-      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
+      type: DataTypes.INTEGER, 
       allowNull: false,
     },
     weight_min:{
-      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
+      type: DataTypes.INTEGER, 
       allowNull: false,
     },
     weight_max:{
-      type: DataTypes.INTEGER, //Respeto la forma en por como m viene en la base de datos
+      type: DataTypes.INTEGER, 
       allowNull: false,
     },
     life_span:{
