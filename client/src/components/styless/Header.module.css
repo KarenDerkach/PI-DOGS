@@ -1,51 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
-.container{
-    
-    background: #FDC830;  /*DEGRADADO*/
-    background: -webkit-linear-gradient(to right, #F37335, #FDC830);  
-    background: linear-gradient(to right, #F37335, #FDC830); 
-    display: flex;
-    flex-direction: row;
-    border-radius: 10px;
-    align-items: center;
-    width: 100%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    padding: 10px;   
-    position: relative;    
-    height: 20vh;
-    border-bottom-left-radius: 50% 20%;
-    border-bottom-right-radius: 50% 20%;
-      
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
+.container {
+  background: #fdc830; /*DEGRADADO*/
+  background: -webkit-linear-gradient(to right, #f37335, #fdc830);
+  background: linear-gradient(to right, #f37335, #fdc830);
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  align-items: center;
+  width: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  position: relative;
+  height: 20vh;
+  border-bottom-left-radius: 50% 20%;
+  border-bottom-right-radius: 50% 20%;
 }
 
-.img{
-    height: 100px;
-    width: 100px;
-    margin-left: 90vh; 
-    box-shadow: none;
+.img {
+  height: 100px;
+  width: 100px;
+  margin-left: 90vh;
+  box-shadow: none;
+}
+.img:hover {
+  transform: scale3d(1.2, 1, 0.3);
 }
 
-
-
-.title{
-    margin-left: 20px;
-    display: center;
-    text-decoration: none;
-    font-family: 'Alfa Slab One', cursive;
-    font-size: 30px;
-    
-    
-}
-.img:hover{
-    
-    transform: scale3d(1.2, 1.0, 0.3); 
+.title {
+  margin-left: 20px;
+  display: center;
+  text-decoration: none;
+  font-family: "Alfa Slab One", cursive;
+  font-size: 30px;
 }
 
-.link{
-    text-decoration: none;
-    color:aliceblue;
-    align-items: center;
-    
+.link {
+  text-decoration: none;
+  color: aliceblue;
+  align-items: center;
 }
-
-

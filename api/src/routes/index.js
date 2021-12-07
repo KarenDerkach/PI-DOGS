@@ -22,20 +22,20 @@ const {getAllDogs, getDogsAPI } = require('./Controllers')
 router.get('/dogs', async (req, res) => {
     const { name } = req.query;
     try{
-        let findDog = await getAllDogs();
-        //console.log(findDog)
+        let foundDog = await getAllDogs();
+        //console.log(foundDog)
         if (name) {
-            const dog = findDog.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
+            const dog = foundDog.filter(dog => dog.name.toLowerCase().includes(name.toLowerCase()));
             if (dog.length > 0) {
                 res.status(200).json(dog);
             } else {
              res.status(404).send('Dog not found whit this name');
             }
         } else {
-            res.status(200).json(findDog);
+            res.status(200).json(foundDog);
         }
     }catch(error){
-        res.status(404).json("Dog not found whit this name");
+        res.status(404).json(error);
     }     
 })
 
@@ -49,9 +49,9 @@ router.get('/dogs/:idRaza', async (req, res) => {
     try {
         let dogId = await getAllDogs();
         if (dogId) {
-            let findDogId = await dogId.filter(dog => dog.id == idRaza);
-            findDogId.length ?
-                res.status(200).json(findDogId) :
+            let foundDogId = await dogId.filter(dog => dog.id == idRaza);
+            foundDogId.length ?
+                res.status(200).json(foundDogId) :
                 res.status(404).send('Dog Id not existing');
         } else {
             res.status(404).send('Not found');
@@ -60,6 +60,7 @@ router.get('/dogs/:idRaza', async (req, res) => {
         res.status(404).send(error);
     }
 })
+
 
 
 /*[ ] GET /temperament:
@@ -75,7 +76,7 @@ router.get('/temperament', async (req, res) => {
         })
         //console.log(temperaments);
         const eachTemp = temperaments.toString().split(/\s*,\s*/).filter(e => e !== '');
-        //console.log(eachTemp);
+        console.log(eachTemp); //[temperamenta1, temperamentb1, temperamenta2, temperamentb2, temperamenta3, temperamentb3]
         for (elem of eachTemp) {
             Temperament.findOrCreate({
                 where: {
@@ -122,6 +123,9 @@ router.post('/dog', async (req, res) => {
 })
 //add agrega un elemento a la relacion y si lo vuelvo a agregar lo concatena
 //set elimina todos los elementos de la relacion y luego los vuelve a agregar
+
+
+
 
 
 module.exports = router;

@@ -8,7 +8,7 @@ function CardDog({ name, temperament, temperaments, image, weight_min}) {
     return (
       <div className={styles.container}>
         <div className={styles.card}>
-        <img src={image} alt="img not found" height="250px" />
+        <img src={image} alt="img not found" />
         <h3>{name}</h3>
         <p>{temperament}</p>
         <p>{weight_min} kg </p>
@@ -19,7 +19,7 @@ function CardDog({ name, temperament, temperaments, image, weight_min}) {
     return (
       <div className={styles.container}>
         <div className={styles.card}>
-        <img src={imgdefault} alt="img not found" height="250px" />
+        <img src={imgdefault} alt="img not found"  />
         <h3>{name}</h3>
         <p>{temperaments?.map((temp) => temp.name).join(", ")}</p>
         <p>{weight_min} kg</p>

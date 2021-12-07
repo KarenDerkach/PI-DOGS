@@ -11,7 +11,7 @@ function Header() {
         <nav className={styles.container}>
             
            <Link to='/home' className={styles.link}>
-            <img src={logo} alt="logo" height="100px" className={styles.img} />
+            <img src={logo} alt="logo" className={styles.img} />
             <span className={styles.title}>DOGS WORLD</span>
             </Link>
            

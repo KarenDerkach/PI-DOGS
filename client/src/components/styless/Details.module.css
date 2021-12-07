@@ -1,132 +1,104 @@
-@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Alfa+Slab+One&display=swap");
 
-.bkg{
-    /*background-image: url('https://images.unsplash.com/photo-1568640347023-a616a30bc3bd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=873&q=80');*/
-     background-size: cover;
-    background-repeat: no-repeat;  
-    background-position: center;
-    position: relative;
-    top:0;
-    left:0;
-    bottom: 0;
-    right: 0;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
+.bkg {
+  position: relative;
+  margin-top: 0;
+  margin-right: 100px;
+  bottom: 0;
+  right: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
-.bkg .container{
-    background: #FD7F20;
-    box-shadow: 0px 10px 29px 15px rgba(0,0,0,0.1);
-    border-radius: 1rem;
-    margin-left: 25%;
-    margin-right: 50%;
-    margin-top: 5%;
-    width: 50vw;
-    height: 85vh;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 4fr 0fr 3fr;
-    /*alinea verticalente*/
-    justify-items: center;
-    /*alinea horizontalmente*/
-    align-content: center;
-
-    overflow: hidden;
-
+.bkg .container {
+  background: #fd7f20;
+  box-shadow: 0px 10px 29px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  margin-left: 25%;
+  margin-right: 50%;
+  margin-top: 5%;
+  width: 65vw;
+  height: 90vh;
+  display: grid;
+  grid-template-columns: 1fr;
+  /*alinea verticalente*/
+  justify-items: center;
+  /*alinea horizontalmente*/
+  align-content: center;
+  overflow: hidden;
 }
 
-.bkg .name{
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fff;
-    text-align: center;
-    margin-top: 0;
-    font-family: 'Alfa Slab One', cursive;
-    letter-spacing: 0.2rem;
-    background: #fbef0f9c;
-    width: 100%;
-    box-shadow: 6px 7px 10px 0px rgba(0,0,0,0.7);
+.bkg .name {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  font-family: "Alfa Slab One", cursive;
+  letter-spacing: 0.2rem;
+  background: #fbef0f9c;
+  width: 100%;
+  box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.7);
 }
 
-img{
-    width: 100%;
-    height: 350px;
-    object-fit: cover; 
-    box-shadow: 6px 7px 10px 0px rgba(0,0,0,0.7);
-    overflow: hidden;
-    grid-area: 1/1/6/2;
-    
+img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+  box-shadow: 6px 7px 10px 0px rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+  grid-area: 1/1/6/2;
 }
 
-
-.icon{
-    font-size: 2rem;
+.icon {
+  font-size: 2rem;
 }
 
-.info{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    line-height: 1px;
-
-   
+.info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  line-height: 1px;
 }
 
-.details{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: -25px;
-    
+.details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: -25px;
 }
 
-.loading{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    align-items: center;
-    margin-top: -25px;
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: -25px;
 }
 
-.temperament{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    width: 100%;
-    gap: 15px;
-    padding: 5px;
-    margin: 1px;
-    margin-top: 0px;
+.temperament {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  gap: 15px;
+  padding: 5px;
+  margin: 1px;
+  margin-top: 0px;
 }
-/* .btnReturn {
-    min-width: 130px;
-    height: 40px;
-    text-align: center;
-    color: #fff;
-    padding: 15px 32px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: -50px 20px;
-    display: inline-block;
-    outline: none;
-    border-radius: 5px;
-    border: 2px solid #ffd819;
-    background: #ffd819;
-  }
-  .btnReturn:hover {
-    background: #fff;
-    color: #ffd819
-  } */
+.temperament .data {
+  white-space: normal;
+  font-weight: normal;
+}

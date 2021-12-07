@@ -1,23 +1,30 @@
-
-.containerDogs{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-    margin-left: 10%;
-   
+.containerDogs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  margin-left: 10%;
 }
 
-.pagination{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
-.loading{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    font-size: large;
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  font-size: large;
+}
+
+.filterTem {
+  display: flex;
+  width: 100%;
+  height: 50%;
+  margin-top: 20px;
+  margin-right: -20px;
+  border-radius: 20px;
 }

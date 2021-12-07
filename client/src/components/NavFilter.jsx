@@ -1,26 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { useEffect} from 'react';
+//import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filterDogsByCreated, filterDogsByTemperament, getListTemperaments, orderByName, orderByWeight} from '../actions/index'
+import {  filterDogsByCreated, filterDogsByTemperament, orderByName, orderByWeight} from '../actions/index'
 import  styles from './styless/NavFilter.module.css'
 
 function NavFilter() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments);
-
-  useEffect(() => {
-    dispatch(getListTemperaments());
-  }, [dispatch]);
+  
 
   //////////////////////////////////////////////////////EVENTS////////////////////////////////////////////////////////////////////
-  
+ 
 
   function handlefilterDogsByCreated(e) {
     e.preventDefault();
     dispatch(filterDogsByCreated(e.target.value));
   }
-  function handleFiltraDogsByTemperament(e) {
+  function handleFilterDogsByTemperament(e) {
     e.preventDefault();
     dispatch(filterDogsByTemperament(e.target.value));
   }
@@ -28,12 +25,16 @@ function NavFilter() {
   function handleOrderByName(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
+    
   }
 
   function handleOrderByWeight(e) {
     e.preventDefault();
     dispatch(orderByWeight(e.target.value));
+   
   }
+
+  
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   return (
@@ -48,7 +49,7 @@ function NavFilter() {
         {/* Botones/Opciones para ORDENAR tanto ascendentemente como descendentemente las razas de perro por: Orden alfabético, Peso*/}
         <div className={styles.orderName}>
           {/*<h5>Name</h5>*/}
-          <select className={styles.select}onChange={(e) => handleOrderByName(e)}>
+          <select className={styles.select} onChange={(e) => handleOrderByName(e)}>
             <option value="asc">A - Z</option>
             <option value="desc">Z - A</option>
           </select>
@@ -75,12 +76,12 @@ function NavFilter() {
         </div>
         
         <div className={styles.filterTem}>
-          <select className={styles.select} onChange={(e) => handleFiltraDogsByTemperament(e)}>
+          <select className={styles.select} onChange={(e) => handleFilterDogsByTemperament(e)}>
             <option value="sinFiltro">Temperaments</option>
             {temperaments?.map((temp) => {
               return (
-                <option key={temp} value={temp}>
-                  {temp}
+                <option key={temp.id} value={temp.name}>
+                  {temp.name}
                 </option>
               );
             })}

@@ -19,7 +19,7 @@ const getDogsDB = async () =>{
      //console.log(infoDB);
      return infoDB;
 }
-// console.log(getDogsDB());
+
 
 const getDogsAPI = async () => {
     const getData = await axios.get('https://api.thedogapi.com/v1/breeds', { headers: {'x-api-key': `${API_KEY}` }})
@@ -46,8 +46,8 @@ const getDogsAPI = async () => {
 const getAllDogs = async () => {
     let getInfoDB = await getDogsDB();
     let getInfoAPI = await getDogsAPI();
-    let allDogs = await getInfoDB.concat(getInfoAPI);
-   //console.log(allDogs);
+    let allDogs = await getInfoAPI.concat(getInfoDB);
+    //console.log(allDogs);
     return allDogs;
 }
 

@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import {getDogs} from '../actions/index'
+import {getDogs, getListTemperaments} from '../actions/index'
 import { Link } from 'react-router-dom'
 import CardDog from './CardDog'
 import Pagination from './Pagination'
@@ -14,11 +14,12 @@ export default function Home() {
   const dispatch = useDispatch(); //HOOK reemplaza mapDispatchToProps, se crea una instancia de la funcion
   //////////////////////////////////////////////ESTADOS GLOBALES//////////////////////////////////////////////////////////////////
   const allDogs = useSelector((state) => state.dogs); //HOOK reemplaza mapStateToProps
+  
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //PAGINADO:
-  const [currentPage, setCurrentPage] = useState(1); //Estado local, pagina actual
-  const [dogsPerPage, setDogsPerPage] = useState(8); //Estado local, cantidad de perros por pagina (8)
+  const [currentPage, setCurrentPage] = useState(1); //pagina actual
+  const [dogsPerPage, setDogsPerPage] = useState(8); //(8)
   const numberOfLastDog = currentPage * dogsPerPage; //Indice del ultimo perro de la pagina actual osea 8
   const numberOfFirstDog = numberOfLastDog - dogsPerPage; //Indice del primer perro de la pagina actual osea 0
   const currentDogs = allDogs.slice(numberOfFirstDog, numberOfLastDog); //Perros de la pagina actual, con slice selecciono los perros de la pagina actual q seran los que tienen indice 0 -1 - 2 - 3 - 4 - 5 - 6 - 7 en total 8 personajes
@@ -31,9 +32,11 @@ export default function Home() {
   useEffect(() => {
     //HOOK para ejecutar una funcion cuando el componente se monta
     dispatch(getDogs());
+    dispatch(getListTemperaments())
+    
   }, [dispatch]);
 
-  
+
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
@@ -54,7 +57,7 @@ export default function Home() {
           
             currentDogs.map((dog) => {
               return (
-                <fragment>
+                
                   <Link
                     to={`/dogs/${dog.id}`}
                     style={{ textDecoration: "none", color: "black" }}
@@ -69,7 +72,7 @@ export default function Home() {
                       weight_max={dog.weight_max}
                     />
                   </Link>
-                </fragment>
+                
               );
             })
             

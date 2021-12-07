@@ -8,34 +8,40 @@ import {ImSearch} from 'react-icons/im'
 
 function SearchBar() {
     const dispatch = useDispatch()
+
     const [name, setName] = useState('')
    
-
     const handleClick= (e)=> {
         e.preventDefault();
         dispatch(getDogs());
       }
     
-    const handleChange = (e) => {
-     e.preventDefault()
-     setName(e.target.value)
-     //console.log(name)
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(getNameDogs(name))
-        setName('')
+        if(name.length === 0){
+            return alert('Please enter a valid name')
+        }else{
+            dispatch(getNameDogs(name))
+            setName('')
+        }
+        
     }
 
     return (
         <div className={styles.container}>
+            <form onSubmit={(e)=> handleSubmit(e)} >
+            <input 
+             type="text" 
+             placeholder="Name ..."
+             value={name}
+             onChange={(e) => setName(e.target.value) }
+            />
+            <button type="submit" onClick={(e)=> handleSubmit(e)} className={styles.search}><ImSearch/></button>
+            </form>
+
             <div>
-            <input  type="text" placeholder="Name ..." value={name} onChange={(e) => handleChange(e) }/>
-            <button type='submit' onClick={(e)=> handleSubmit(e)} className={styles.search}><ImSearch/></button>
-            </div>
-            <div>
-            <button onClick={(e) => {handleClick(e)}}  className={styles.refresh}>  Refresh  </button>
+            <button onClick={(e) => handleClick(e)}  className={styles.refresh}>  Refresh  </button>
             </div>
         </div>
     )

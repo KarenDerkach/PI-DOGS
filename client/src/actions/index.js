@@ -7,8 +7,10 @@ export function getDogs(){
         axios.get('http://localhost:3001/dogs')
         .then((response)=>{
             dispatch({type:'GET_DOGS', payload: response.data})
+            
         })
-        .catch((err)=>{
+        
+        .catch(()=>{
             console.log('Error al cargar datos');
         })
     }
@@ -31,10 +33,11 @@ export function getNameDogs (name){
    }
 
 export function postDog (info){ //recibe un objeto con toda la info del perro a crear (createDogs)
-    return async function(dispatch){
-        const response = await axios.post('http://localhost:3001/dog', info)
-        //console.log(response);
-        return response;
+    return  function(dispatch){
+     axios.post('http://localhost:3001/dog', info)
+     .then((response)=>{
+         return response.data;
+     })
     }
 }
 
@@ -44,7 +47,7 @@ export function getDetailsDogs(id){
         .then((response)=>{
             dispatch({type:'GET_DETAILS_DOG', payload: response.data})
         })
-        .catch((err)=>{
+        .catch(()=>{
             console.log('No se encuentra Id');
         })
     }
@@ -58,9 +61,10 @@ export function getListTemperaments(){ //(CreateDogs) (HOME)
         .then((response)=>{
             dispatch({type:'GET_TEMPERAMENTS', payload: response.data})
         }) 
-        .catch((err)=>{ alert('Error al traer temperamentos')})
+        .catch(()=>{ alert('Error al traer temperamentos')})
     }
 }
+
 
 export function filterDogsByTemperament(payload){
     return{
@@ -68,6 +72,8 @@ export function filterDogsByTemperament(payload){
         payload
     }
 }
+
+
 
 //accion para filtrar los perros creados por el usuario
 export function filterDogsByCreated(value){

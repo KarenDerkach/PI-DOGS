@@ -1,8 +1,8 @@
 import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
-import {postDog, getListTemperaments, getDetailsDogs} from '../actions/index'
+import {postDog, getListTemperaments} from '../actions/index'
 import imgdefault from '../img/createDog_1.jpg'
 import style from './styless/CreateDogs.module.css'
 //ICONS
@@ -16,8 +16,6 @@ function CreateDogs() {
 
     useEffect(() => {  //que renderize la lista de temperamentos
         dispatch(getListTemperaments())
-        //dispatch(getDetailsDogs())
-        
     }, [dispatch])    
 
     const [input, setInput] = useState({
@@ -38,23 +36,15 @@ function CreateDogs() {
       } 
       if (!input.height_min) {
         error.height_min = 'Height Min is required';
-      }else if (!/\d{1,2}/g.test(input.height_min)) {
-        error.height_min = 'Must be a number';
       }
       if (!input.height_max) {
         error.height_max = 'Height Max is required';
-      }else if (!/\d{1,2}/g.test(input.height_max)) {
-        error.height_max = 'Must be a number';
       }
       if (!input.weight_min) {
         error.weight_min = 'Weight Min is required';
-      }else if (!/\d{1,2}/g.test(input.weight_min)) {
-        error.weight_min = 'Ingrese un número';
       }
       if (!input.weight_max) {  
         error.weight_max = 'Height Max is required';
-      }else if (!/\d{1,2}/g.test(input.weight_max)) {
-        error.weight_max = 'Ingrese un número';
       }
 
       if(input.height_min > input.height_max) {
@@ -136,7 +126,7 @@ function CreateDogs() {
         
         {/**NOMBRE */}
         <div className={style.section}>
-          <h5>Name:</h5>
+          <h5>Name</h5>
           <input 
             type="text"
             name="name"
@@ -151,7 +141,7 @@ function CreateDogs() {
             
             {/**PESO */}
             <div className={style.section}>
-            <h5>Weight:</h5>
+            <h5>Weight</h5>
             <div className={style.font}>
           <label>Min:</label>
           <input
@@ -165,7 +155,7 @@ function CreateDogs() {
           {error.weight_min && <p className={style.error}>{error.weight_min}</p>}
             </div>
             <div className={style.font}>
-          <label>Max:</label>
+          <label>Max</label>
           <input
             type="text"
             name="weight_max"
@@ -180,7 +170,7 @@ function CreateDogs() {
 
             {/**ALTURA */}
             <div className={style.section}>
-          <h5>Height:</h5>
+          <h5>Height</h5>
           <div className={style.font}>
           <label>Min:</label>
           <input
@@ -210,7 +200,7 @@ function CreateDogs() {
 
             <div className={style.section}>
             {/**VIDA */}
-          <h5>Life Span:</h5>
+          <h5>Life Span</h5>
           <input
             type="text"
             name="life_span"
@@ -224,12 +214,12 @@ function CreateDogs() {
 
           <div className={style.section}>
           {/**TEMPERAMENTOS */}
-          <h5>Temperaments:</h5>
+          <h5>Temperaments</h5>
           <select onChange={(e)=>handleSelect(e)} className={style.selectTemp}>
             {temperaments?.map((temp) => {
               return (
-                <option key={temp} value={temp}>
-                  {temp}
+                <option key={temp.id} value={temp.name}>
+                  {temp.name}
                 </option>
               );
             })}
