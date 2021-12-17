@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 //middleware permite leer el body de la peticion
 router.use(express.json())
+const axios = require('axios');
 //TRAIGO LOS MODELOS
 const { Dog, Temperament } = require('../db.js');
 //TRAIGO LAS FUNCIONES CONTROLADORAS
@@ -76,7 +77,7 @@ router.get('/temperament', async (req, res) => {
         })
         //console.log(temperaments);
         const eachTemp = temperaments.toString().split(/\s*,\s*/).filter(e => e !== '');
-        console.log(eachTemp); //[temperamenta1, temperamentb1, temperamenta2, temperamentb2, temperamenta3, temperamentb3]
+        //console.log(eachTemp); //[temperamenta1, temperamentb1, temperamenta2, temperamentb2, temperamenta3, temperamentb3]
         for (elem of eachTemp) {
             Temperament.findOrCreate({
                 where: {
@@ -103,8 +104,16 @@ Recibe los datos recolectados desde el formulario controlado de la ruta de creac
 Crea una raza de perro en la base de datos */
 
 router.post('/dog', async (req, res) => {
-    let { name, height_min, height_max, weight_min, weight_max, life_span, createInBd, temperament } = req.body; //datos del formulario controlado
-    if (name && height_min && height_max && weight_min && weight_max && life_span && temperament) {
+    let { name, height_min, height_max, weight_min, weight_max, life_span, createInBd, temperament, image } = req.body; //datos del formulario controlado
+    if(!image){
+        try {
+            image = await (await axios.get('https://dog.ceo/api/breeds/image/random')).data.message;
+        } catch (error) {
+            console.log(error)
+        }
+    }
+    
+    if (name && height_min && height_max && weight_min && weight_max && life_span && temperament && image) {
         let dogsCreate = await Dog.create({
             name: name,
             height_min: parseInt(height_min),
@@ -112,8 +121,10 @@ router.post('/dog', async (req, res) => {
             weight_min: parseInt(weight_min),
             weight_max: parseInt(weight_max),
             life_span: life_span,
+            image: image || 'https://dog.ceo/api/breeds/image/random' ,
             createInBd: createInBd,
         })
+        
         let findTemperamentDB = await Temperament.findAll({ where: { name: temperament } })
         dogsCreate.addTemperament(findTemperamentDB); //agrego al perro creado el temperamento que selecciono el usuario
         res.status(200).send(dogsCreate)
@@ -123,7 +134,6 @@ router.post('/dog', async (req, res) => {
 })
 //add agrega un elemento a la relacion y si lo vuelvo a agregar lo concatena
 //set elimina todos los elementos de la relacion y luego los vuelve a agregar
-
 
 
 

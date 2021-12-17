@@ -31,7 +31,7 @@ export default function rootReducer(state = initialState, action) {
                 temperaments: action.payload
             }
         case 'FILTER_DOGS_BY_TEMPERAMENT':
-            const allDoguies = state.allDogs
+            const allDoguies = state.dogs
             const tempDogs = allDoguies.filter(dog => {
                 if(dog.temperaments){ // info viene como [{name:..},{name:..},{name:..}]
                     const temperament = dog.temperaments.map( dog => dog.name)

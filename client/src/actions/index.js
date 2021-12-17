@@ -32,6 +32,7 @@ export function getNameDogs (name){
     }
    }
 
+
 export function postDog (info){ //recibe un objeto con toda la info del perro a crear (createDogs)
     return  function(dispatch){
      axios.post('http://localhost:3001/dog', info)

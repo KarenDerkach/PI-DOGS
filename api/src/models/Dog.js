@@ -33,7 +33,12 @@ module.exports = (sequelize) => {
     life_span:{
       type: DataTypes.STRING,
 
-    },//createInBd es un atributo q me permitira distinguir cuando cree un animal mediante mi BD y no traido desde la API
+    },
+    image:{
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    //createInBd es un atributo q me permitira distinguir cuando cree un animal mediante mi BD y no traido desde la API
     createInBd:{
       type: DataTypes.BOOLEAN,
       allowNull: false,
