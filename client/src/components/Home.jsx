@@ -19,7 +19,7 @@ export default function Home() {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //PAGINADO:
   const [currentPage, setCurrentPage] = useState(1); //pagina actual
-  const [dogsPerPage, setDogsPerPage] = useState(8); //(8)
+  const [dogsPerPage] = useState(8); //(8)
   const numberOfLastDog = currentPage * dogsPerPage; //Indice del ultimo perro de la pagina actual osea 8
   const numberOfFirstDog = numberOfLastDog - dogsPerPage; //Indice del primer perro de la pagina actual osea 0
   const currentDogs = allDogs.slice(numberOfFirstDog, numberOfLastDog); //Perros de la pagina actual, con slice selecciono los perros de la pagina actual q seran los que tienen indice 0 -1 - 2 - 3 - 4 - 5 - 6 - 7 en total 8 personajes

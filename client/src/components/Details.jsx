@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {getDetailsDogs} from '../actions/index'
-import imgdefault from '../img/createDog_1.jpg'
+//import imgdefault from '../img/createDog_1.jpg'
 import style from './styless/Details.module.css'
 //ICONS
 import { BiBone } from "react-icons/bi";
@@ -35,7 +35,7 @@ function Details() {
                 allDetails.length > 0 ?
 
                 <div className={style.container}>
-                <img src={allDetails[0].image ? allDetails[0].image : imgdefault} alt='img not found'  />
+                <img src={allDetails[0].image} alt='img not found'  />
                 <h1 className={style.name}>{allDetails[0].name} < BiBone /> </h1>
                 <div className={style.info}>
                     <div  className={style.details}>
@@ -50,6 +50,7 @@ function Details() {
                 <h3 className={style.icon} ><GiWeight/></h3>
                 <p>{allDetails[0].weight_min}  - {allDetails[0].weight_max} kg</p> 
                     </div>
+               
                 <div className={style.temperament}>
                 <h3 className={style.icon} ><GiJumpingDog/> </h3>
                  <p className={style.data}>{

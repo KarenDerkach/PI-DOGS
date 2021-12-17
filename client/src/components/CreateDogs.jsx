@@ -25,6 +25,7 @@ function CreateDogs() {
         weight_min: '',
         weight_max: '',
         life_span: '',
+        image:'',
         temperament: [],
     })
     const [error, setError] = useState({})
@@ -33,15 +34,21 @@ function CreateDogs() {
       const error = {}
       if (!input.name) {
         error.name = 'Name is required';
-      } 
+      }
       if (!input.height_min) {
         error.height_min = 'Height Min is required';
+      }
+      if(input.height_min  < 0){
+        error.height_min = 'Height Min must be greater than 0'
       }
       if (!input.height_max) {
         error.height_max = 'Height Max is required';
       }
       if (!input.weight_min) {
         error.weight_min = 'Weight Min is required';
+      }
+      if(input.weight_min < 0){
+        error.weight_min = 'Weight Min must be greater than 0'
       }
       if (!input.weight_max) {  
         error.weight_max = 'Height Max is required';
@@ -96,7 +103,7 @@ function CreateDogs() {
         input.temperament) {
       dispatch(postDog(input));
       //console.log(input);
-      alert("¡CREATED PET!");
+      alert("CREATED PET!");
       setInput({
         name: "",
         height_min: "",
@@ -104,6 +111,7 @@ function CreateDogs() {
         weight_min: "",
         weight_max: "",
         life_span: "",
+        image: "",
         temperament: [],
       });
       navigate('/home');
@@ -145,7 +153,7 @@ function CreateDogs() {
             <div className={style.font}>
           <label>Min:</label>
           <input
-            type="text"
+            type="number"
             name="weight_min"
             value={input.weight_min}
             placeholder= "2"
@@ -157,7 +165,7 @@ function CreateDogs() {
             <div className={style.font}>
           <label>Max</label>
           <input
-            type="text"
+            type="number"
             name="weight_max"
             value={input.weight_max}
             placeholder= "5"
@@ -174,7 +182,7 @@ function CreateDogs() {
           <div className={style.font}>
           <label>Min:</label>
           <input
-            type="text"
+            type="number"
             name="height_min"
             value={input.height_min}
             placeholder= "2"
@@ -186,7 +194,7 @@ function CreateDogs() {
           <div className={style.font}>
             <label>Max:</label>
           <input
-            type="text"
+            type="number"
             name="height_max"
             value={input.height_max}
             placeholder= "3"
@@ -202,7 +210,7 @@ function CreateDogs() {
             {/**VIDA */}
           <h5>Life Span</h5>
           <input
-            type="text"
+            type="number"
             name="life_span"
             value={input.life_span}
             placeholder="years..."
@@ -210,6 +218,19 @@ function CreateDogs() {
             className={style.input}
           />
           {error.life_span && <p className={style.error}>{error.life_span}</p>}
+          </div>
+
+          <div className={style.section}>
+            {/**IMAGEN */}
+          <h5>Image</h5>
+          <input
+            type="url"
+            name="image"
+            value={input.image}
+            placeholder="http://myimageontheweb.com.."
+            onChange={(e)=>handleInputChange(e)}
+            className={style.input}
+          />
           </div>
 
           <div className={style.section}>
@@ -225,7 +246,7 @@ function CreateDogs() {
             })}
           </select>
           <div className={style.boxSelectTemp}>
-          <h4>Selected Temperaments: </h4> {/*muestro los temperamentos seleccionados*/}
+          {/* Muestro los temperamentos seleccionados */}
           {input.temperament.map(elem =>
             <div className={style.temps} key={elem}> <p >{elem}</p> 
             <button onClick={()=> handleDelete(elem)} className={style.btnDelete}><TiDelete/></button>
