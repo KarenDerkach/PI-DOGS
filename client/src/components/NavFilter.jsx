@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-//import { useEffect} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {  filterDogsByCreated, filterDogsByTemperament, orderByName, orderByWeight} from '../actions/index'
 import  styles from './styless/NavFilter.module.css'
@@ -50,6 +49,7 @@ function NavFilter() {
         <div className={styles.orderName}>
           {/*<h5>Name</h5>*/}
           <select className={styles.select} onChange={(e) => handleOrderByName(e)}>
+          <option defaultValue value="all">Name</option>
             <option value="asc">A - Z</option>
             <option value="desc">Z - A</option>
           </select>
@@ -58,6 +58,7 @@ function NavFilter() {
         <div className={styles.orderWeight}>
           {/*<h5>Weight</h5>*/}
           <select className={styles.select} onChange={(e) => handleOrderByWeight(e)}>
+            <option defaultValue value="all">Weight</option>
             <option value="asc">Light</option>
             <option value="desc">Heavy</option>
           </select>

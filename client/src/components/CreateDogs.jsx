@@ -5,6 +5,7 @@ import {useDispatch, useSelector} from 'react-redux'
 import {postDog, getListTemperaments} from '../actions/index'
 import imgdefault from '../img/createDog_1.jpg'
 import style from './styless/CreateDogs.module.css'
+import swal from 'sweetalert'
 //ICONS
 import {TiDelete} from 'react-icons/ti'
 
@@ -103,7 +104,7 @@ function CreateDogs() {
         input.temperament) {
       dispatch(postDog(input));
       //console.log(input);
-      alert("CREATED PET!");
+      swal("Congratulation","Your pet has been created!", "success")
       setInput({
         name: "",
         height_min: "",
@@ -115,9 +116,11 @@ function CreateDogs() {
         temperament: [],
       });
       navigate('/home');
-      
       }else {
-        alert('PLEASE FILL ALL THE FIELDS')
+        swal({
+          text:'Please, fill all the fields',
+          icon: 'error'
+        })
     }
   };
 

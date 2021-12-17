@@ -1,4 +1,5 @@
 import axios from 'axios';
+import swal from 'sweetalert'
 
 
 //action qe permite renderizar todos los perros (home)
@@ -27,7 +28,11 @@ export function getNameDogs (name){
                })
         })
            .catch(()=>{
-               alert("Raza no existente");
+               swal({
+                   title:"Breed not exist",
+                   text: "Try with other breed",
+                   icon: "error",
+                   dangerMode: true});
            })
     }
    }

@@ -3,6 +3,7 @@ import {useState} from 'react'
 import {useDispatch} from 'react-redux'
 import {getDogs, getNameDogs } from '../actions/index'
 import styles from './styless/SearchBar.module.css' 
+import swal from 'sweetalert'
 //ICONS
 import {ImSearch} from 'react-icons/im'
 
@@ -20,7 +21,11 @@ function SearchBar() {
     const handleSubmit = (e) => {
         e.preventDefault()
         if(name.length === 0){
-            return alert('Please enter a valid name')
+            return swal({
+                title:'Please enter a valid name',
+                icon: 'error',
+                dangerMode: true,
+            })
         }else{
             dispatch(getNameDogs(name))
             setName('')
