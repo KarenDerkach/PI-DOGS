@@ -9,6 +9,8 @@ import Header from './Header'
 import SearchBar from './SearchBar'
 import NavFilter from './NavFilter'
 import styles from './styless/Home.module.css'
+//import GifLoader from 'react-gif-loader';
+import loading from '../img/Runningdog.gif'
 
 export default function Home() {
   const dispatch = useDispatch(); //HOOK reemplaza mapDispatchToProps, se crea una instancia de la funcion
@@ -77,7 +79,10 @@ export default function Home() {
             })
             
             :
+            <div>
+            <img src={loading} alt="loading gif" className={styles.loadingif}/>
             <div className={styles.loading}><h2>Loading...</h2></div>
+            </div>
             }
         </div>
 

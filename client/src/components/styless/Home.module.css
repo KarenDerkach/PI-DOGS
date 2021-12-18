@@ -12,13 +12,16 @@
   margin-top: 20px;
 }
 
-.loading {
-  display: flex;
+.loadingif {
+ display: flex;
+ width: 100%;
   justify-content: center;
   align-items: center;
-  margin-top: 20px;
-  font-size: large;
-  color:orange
+  background-position-x: center;
+  background-position-y: center;
+  background-size: hidden;
+  background : transparent
+
 }
 
 .filterTem {
