@@ -23,12 +23,13 @@
   display: inline-block;
   outline: none;
   border-radius: 20px;
-  border: 2px solid #ffd819;
-  background: #ffa500;
+  border: 6px solid #ffd819;
+  background: transparent;
 }
 .btnCreate:hover {
-  background: #fff;
-  color: #ffd819;
+  background-color: #ffa600d3;
+  color: #fff;
+
 }
 .btnCreate:active {
   transform: translateY(-1px);

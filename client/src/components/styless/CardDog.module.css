@@ -1,64 +1,64 @@
-@import url('https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap");
 .container {
- 
-  display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-   width: 100%;
+  margin-top: 20px;
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
   overflow: hidden;
+  margin: 0 auto;
+  padding: 20px; */
+}
+.container .card {
+  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 350px;
+  height: 350px;
+  margin-top: 15px;
+  margin-right: 30px;
+  margin-bottom: 15px;
+  margin-left: 30px;
+  border-radius: 25px;
+  padding-bottom: 17px;
+  box-sizing: content-box;  
+  background: #fafaf8b9;
 
 }
-.container .card{
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    width: 350px;
-    height: 350px;
-    position: relative;
-    align-items: center;
-    justify-items: center;
-    border-radius: 40px;
-    background: #e0e0e000;
-    box-shadow: 0px 1px 10px rgba(0,0,0,0.2);
-    transition: all 200ms ease;
-    cursor: pointer;
-  
-}
-.container .card:hover{
-    transform: scale(1.00);
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+.container .card:hover {
+  transform: scale(1);
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }
 
-.card h3{
-    font-size: 1.5rem;
-    margin: 1px;
-    padding: 1px;
-    font-size: large;
-    font-family: 'Readex Pro', sans-serif;
-    text-align: center;
-    color: rgb(255, 255, 254);
-    background-color: rgb(250, 164, 6);
-    width: 100%;
-    border-radius: 5px;
-    box-shadow: 5px 5px 20px rgba(0,0,0,0.4);
+.card h3 {
+  font-size: 1.5rem;
+  margin: 1px;
+  padding: 1px;
+  font-size: large;
+  font-family: "Readex Pro", sans-serif;
+  text-align: center;
+  color: rgb(255, 255, 254);
+  background-color: rgb(250, 164, 6);
+  width: 100%;
+  border-radius: 5px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }
-
-.container .card img{
-    width: 350px;
-    height: 250px;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    border-radius: 4% 4% 0 0;
+.imgcard {
+  width: 350px;
+  height: 250px;
+  overflow: hidden;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  object-fit: cover;
 }
-
-.container .card p{
-    font-size: 16px;
-    margin: 0;
-    padding: 0 1rem;
-    font-weight: 100;
-    text-align: center;
-    text-decoration: none;
+.card p {
+  font-size: 13px;
+  font-family: "Readex Pro", sans-serif;
+  margin: 2px;
+  padding: 3px;
+  font-weight: 100;
+  text-align: center;
+  text-decoration: none;
 }
-

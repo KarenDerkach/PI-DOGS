@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react' 
 import styles from './styless/CardDog.module.css'
 
 function CardDog({ name, temperament, temperaments, image, weight_min}) {
@@ -7,7 +7,7 @@ function CardDog({ name, temperament, temperaments, image, weight_min}) {
     return (
       <div className={styles.container}>
         <div className={styles.card}>
-        <img src={image} alt="img not found" />
+        <img src={image} alt="img not found" className={styles.imgcard} />
         <h3>{name}</h3>
         <p>{temperament}</p>
         <p>{weight_min} kg </p>
@@ -18,7 +18,7 @@ function CardDog({ name, temperament, temperaments, image, weight_min}) {
     return (
       <div className={styles.container}>
         <div className={styles.card}>
-        <img src={image} alt="img not found"  />
+        <img src={image} alt="img not found" className={styles.imgcard} />
         <h3>{name}</h3>
         <p>{temperaments?.map((temp) => temp.name).join(", ")}</p>
         <p>{weight_min} kg</p>

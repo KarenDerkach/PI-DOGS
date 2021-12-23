@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import {getDetailsDogs} from '../actions/index'
+import Loading from './Loading'
 //import imgdefault from '../img/createDog_1.jpg'
 import style from './styless/Details.module.css'
 //ICONS
@@ -30,12 +31,13 @@ function Details() {
     } )
     
     return (
-        <div className={style.bkg}>
+        <div >
             {
                 allDetails.length > 0 ?
 
+                <div>
+                <img src={allDetails[0].image} alt='img not found' className={style.image} />
                 <div className={style.container}>
-                <img src={allDetails[0].image} alt='img not found'  />
                 <h1 className={style.name}>{allDetails[0].name} < BiBone /> </h1>
                 <div className={style.info}>
                     <div  className={style.details}>
@@ -55,13 +57,18 @@ function Details() {
                 <h3 className={style.icon} ><GiJumpingDog/> </h3>
                  <p className={style.data}>{
                 allDetails[0].temperament ? allDetails[0].temperament : 
-                allDetails[0].temperaments?.map(elem => elem.name + '  ')}</p>
+                allDetails[0].temperaments?.map(elem => elem.name + ' ')}
+                </p>
+                
                 </div>
-
+                    <div>
+                        <img className={style.imgBkg} src={allDetails[0].image} alt='img not found' />
+                    </div>
+                </div>
                 </div>
                 </div>
                 :
-                <div className={style.loading}><h2>Loading...</h2></div>
+                <div> <Loading/> </div>
             }
             
             {/*<Link to='/home'><button className={style.btnReturn}>Return</button></Link>*/}

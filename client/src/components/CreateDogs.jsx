@@ -127,8 +127,7 @@ function CreateDogs() {
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     return (
-      <div>
-      <h1>Define your own dog!</h1>
+      <div className={style.bkg}>
       <div className={style.container}>
         
         <img className={style.imgDog} src={imgdefault} alt="dog" />
@@ -145,6 +144,7 @@ function CreateDogs() {
             placeholder="Name..."
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
           />
           {error.name && <p className={style.error}>{error.name}</p>}
         </div>
@@ -162,6 +162,7 @@ function CreateDogs() {
             placeholder= "2"
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
           />
           {error.weight_min && <p className={style.error}>{error.weight_min}</p>}
             </div>
@@ -174,6 +175,7 @@ function CreateDogs() {
             placeholder= "5"
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
           />
           {error.weight_max && <p className={style.error}>{error.weight_max}</p>}
           </div>
@@ -191,6 +193,7 @@ function CreateDogs() {
             placeholder= "2"
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
             />
           {error.height_min && <p className={style.error}>{error.height_min}</p>}
           </div>
@@ -203,6 +206,7 @@ function CreateDogs() {
             placeholder= "3"
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
             />
           {error.height_max && <p className={style.error}>{error.height_max}</p>}
            </div>
@@ -219,6 +223,7 @@ function CreateDogs() {
             placeholder="years..."
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
           />
           {error.life_span && <p className={style.error}>{error.life_span}</p>}
           </div>
@@ -233,6 +238,7 @@ function CreateDogs() {
             placeholder="http://myimageontheweb.com.."
             onChange={(e)=>handleInputChange(e)}
             className={style.input}
+            autoComplete="off"
           />
           </div>
 

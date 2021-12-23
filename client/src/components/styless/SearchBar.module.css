@@ -1,36 +1,38 @@
 .container {
-  font-size: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   transition: 0.5s;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .container input {
-  border: none;
-  outline: none;
   font-size: 15px;
   width: 200px;
   height: 30px;
   padding: 0 10px;
-  background-color: red;
   border-radius: 25px 0 0 25px;
-  background-color: #ffa500;
+  background-color: transparent;
   border: 2px solid #ffd819;
-  color: white;
+  color: orange;
+}
+.input:hover {
+  background-color: #ffa600d3;
+  color: #fff;
+  border: 2px solid #ffd819;
 }
 
-.container .search {
+.input [placeholder="Name ..."]{
+  color:orange
+}
+.search {
   border: 2px solid #ffd819;
-  outline: none;
   cursor: pointer;
   left: -5px;
   border-radius: 0 25px 25px 0;
-  font-size: 1rem;
-  width: 50px;
-  height: 32px;
+  width: 55px;
+  height: 35px;
   background-color: #ffa500;
   color: #fff;
 }
@@ -51,9 +53,9 @@
   outline: none;
   border-radius: 20px;
   border: 2px solid #ffd819;
-  background: #ffa500;
+  background: transparent;
 }
 .refresh:hover {
-  background: #fff;
-  color: #ffd819;
+  background-color: #ffa600d3;
+  color: #fff;
 }

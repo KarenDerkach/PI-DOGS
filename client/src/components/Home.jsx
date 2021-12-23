@@ -8,9 +8,11 @@ import Pagination from './Pagination'
 import Header from './Header'
 import SearchBar from './SearchBar'
 import NavFilter from './NavFilter'
+import Loading from './Loading'
 import styles from './styless/Home.module.css'
+import img from './../img/grass0.jpg'
 //import GifLoader from 'react-gif-loader';
-import loading from '../img/Runningdog.gif'
+
 
 export default function Home() {
   const dispatch = useDispatch(); //HOOK reemplaza mapDispatchToProps, se crea una instancia de la funcion
@@ -42,7 +44,8 @@ export default function Home() {
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
-    <div className={styles.bgk}>
+    <div>
+ 
       <div className={styles.header}>
         <Header />
       </div>
@@ -80,8 +83,7 @@ export default function Home() {
             
             :
             <div>
-            <img src={loading} alt="loading gif" className={styles.loadingif}/>
-            <div className={styles.loading}><h2>Loading...</h2></div>
+            <Loading/>
             </div>
             }
         </div>
@@ -94,6 +96,9 @@ export default function Home() {
             currentPage={currentPage}
           />
         </div>
+        <div>
+    <img src={img} alt="img bgk" className={styles.bgk} />
+    </div>
       </div>
     </div>
   );

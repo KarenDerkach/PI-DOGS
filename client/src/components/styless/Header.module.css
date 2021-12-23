@@ -19,19 +19,25 @@
 .img {
   height: 100px;
   width: 100px;
-  margin-left: 90vh;
+  margin-left: 630px;
   box-shadow: none;
 }
 .img:hover {
-  transform: scale3d(1.2, 1, 0.3);
+  transform: scale3d(1.2, 1, 0.5);
 }
 
 .title {
-  margin-left: 20px;
-  display: center;
+  display: flex;
   text-decoration: none;
   font-family: "Alfa Slab One", cursive;
   font-size: 30px;
+  font-weight: bold;
+  letter-spacing: 1.6px;
+  text-shadow: 1px 2px 2px #ac6e1d;
+  color: #fff;
+  text-align: center;
+  margin-top: 0;
+  margin-left: 570px;
 }
 
 .link {
