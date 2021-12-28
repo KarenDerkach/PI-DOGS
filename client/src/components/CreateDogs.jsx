@@ -31,6 +31,7 @@ function CreateDogs() {
     })
     const [error, setError] = useState({})
 
+    //-----------------------------------VALIDATION ERRORS---------------------------------------
     const validacion = function(input) {
       const error = {}
       if (!input.name) {
@@ -80,6 +81,7 @@ function CreateDogs() {
         })
         
     }
+    //-----------------TEMPERAMENTS--------------------------------------------------
     const handleSelect = (e)=> {
         setInput({
             ...input,
@@ -93,6 +95,9 @@ function CreateDogs() {
             temperament: input.temperament.filter(item => item !== elem) //elimino el temperamento seleccionado del array de temperamentos
         })
     }
+
+    //-------------------------------------------------------------------------------------
+
     const handleSubmit = (e) => {
         e.preventDefault()
       if(input.name &&
@@ -156,7 +161,7 @@ function CreateDogs() {
             <div className={style.font}>
           <label>Min:</label>
           <input
-            type="number"
+            type="text"
             name="weight_min"
             value={input.weight_min}
             placeholder= "2"
@@ -169,7 +174,7 @@ function CreateDogs() {
             <div className={style.font}>
           <label>Max</label>
           <input
-            type="number"
+            type="text"
             name="weight_max"
             value={input.weight_max}
             placeholder= "5"
@@ -187,7 +192,7 @@ function CreateDogs() {
           <div className={style.font}>
           <label>Min:</label>
           <input
-            type="number"
+            type="text"
             name="height_min"
             value={input.height_min}
             placeholder= "2"
@@ -200,7 +205,7 @@ function CreateDogs() {
           <div className={style.font}>
             <label>Max:</label>
           <input
-            type="number"
+            type="text"
             name="height_max"
             value={input.height_max}
             placeholder= "3"

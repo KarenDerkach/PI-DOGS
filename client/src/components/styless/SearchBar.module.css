@@ -5,9 +5,10 @@
   transition: 0.5s;
   margin-top: 10px;
   margin-bottom: 20px;
+  
 }
 
-.container input {
+input {
   font-size: 15px;
   width: 200px;
   height: 30px;
@@ -15,17 +16,12 @@
   border-radius: 25px 0 0 25px;
   background-color: transparent;
   border: 2px solid #ffd819;
-  color: orange;
-}
-.input:hover {
-  background-color: #ffa600d3;
-  color: #fff;
-  border: 2px solid #ffd819;
+  color: white;
+  outline: none;
 }
 
-.input [placeholder="Name ..."]{
-  color:orange
-}
+
+
 .search {
   border: 2px solid #ffd819;
   cursor: pointer;

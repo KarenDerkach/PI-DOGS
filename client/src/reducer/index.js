@@ -44,7 +44,8 @@ export default function rootReducer(state = initialState, action) {
 
             return {
                 ...state,
-                dogs: action.payload === 'sinFiltro' ? allDoguies : tempDogs
+                dogs: action.payload === 'sinFiltro' ? allDoguies : tempDogs,
+
             }
 
         case 'POST_DOGS':  //No se declara en actions, se declara en el reducer. en action solo se trae la ruta
