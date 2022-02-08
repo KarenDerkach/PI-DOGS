@@ -5,7 +5,7 @@ import swal from 'sweetalert'
 //action qe permite renderizar todos los perros (home)
 export function getDogs(){
     return function(dispatch){
-        axios.get('http://localhost:3001/dogs')
+        axios.get('/dogs')
         .then((response)=>{
             dispatch({type:'GET_DOGS', payload: response.data})
             
@@ -20,7 +20,7 @@ export function getDogs(){
 //action qe permite buscar perros por nombre  (SearchBar)
 export function getNameDogs (name){
     return function(dispatch){
-        axios.get('http://localhost:3001/dogs?name='+ name)
+        axios.get('/dogs?name='+ name)
         .then((response)=>{
                dispatch({
                    type: 'GET_DOGS_NAME',
@@ -40,7 +40,7 @@ export function getNameDogs (name){
 
 export function postDog (info){ //recibe un objeto con toda la info del perro a crear (createDogs)
     return  function(dispatch){
-     axios.post('http://localhost:3001/dog', info)
+     axios.post('/dog', info)
      .then((response)=>{
          return response.data;
      })
@@ -49,7 +49,7 @@ export function postDog (info){ //recibe un objeto con toda la info del perro a 
 
 export function getDetailsDogs(id){
     return function(dispatch){
-        axios.get('http://localhost:3001/dogs/'+ id)
+        axios.get('/dogs/'+ id)
         .then((response)=>{
             dispatch({type:'GET_DETAILS_DOG', payload: response.data})
         })
@@ -63,7 +63,7 @@ export function getDetailsDogs(id){
 
 export function getListTemperaments(){ //(CreateDogs) (HOME)
     return function(dispatch){
-        axios.get('http://localhost:3001/temperament')
+        axios.get('/temperament')
         .then((response)=>{
             dispatch({type:'GET_TEMPERAMENTS', payload: response.data})
         }) 

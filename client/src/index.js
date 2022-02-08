@@ -4,8 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
+import axios from 'axios';
 import store from './store/index';
+import dotenv from 'dotenv';
 import { BrowserRouter } from 'react-router-dom';
+
+dotenv.config();
+
+axios.defaults.baseURL = process.env.REACT_APP_API || 'http://localhost:3001';
 
 ReactDOM.render(
   <Provider store={store}> {/*conectar el estado de redux con nuestro componente de react. */}
