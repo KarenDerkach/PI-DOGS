@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   filterDogsByCreated,
@@ -8,6 +8,7 @@ import {
   orderByName,
   orderByWeight,
   getListTemperaments,
+  getDogs,
 } from "../actions/index";
 import styles from "./styless/NavFilter.module.css";
 
@@ -15,10 +16,12 @@ import styles from "./styless/NavFilter.module.css";
 function NavFilter() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments); //estado global de temperamentos
+  const [, setCurrentPage] = useState(1)
 
   useEffect(() => {
     //que renderize la lista de temperamentos
     dispatch(getListTemperaments());
+    dispatch(getDogs());
   }, [dispatch]);
 
   //////////////////////////////////////////////////////EVENTS////////////////////////////////////////////////////////////////////
@@ -26,22 +29,26 @@ function NavFilter() {
   function handlefilterDogsByCreated(e) {
     e.preventDefault();
     dispatch(filterDogsByCreated(e.target.value));
+    setCurrentPage(1);
   }
 
   //----------------------------------------TEMPERAMENTS----------------------------------------
   function handleFilterDogsByTemperament(e) {
     e.preventDefault();
     dispatch(filterDogsByTemperament(e.target.value));
+    setCurrentPage(1);
   }
   //--------------------------------------------------------------------------------
   function handleOrderByName(e) {
     e.preventDefault();
     dispatch(orderByName(e.target.value));
+    setCurrentPage(1);
   }
 
   function handleOrderByWeight(e) {
     e.preventDefault();
     dispatch(orderByWeight(e.target.value));
+    setCurrentPage(1);
   }
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

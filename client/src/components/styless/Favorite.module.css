@@ -1,0 +1,12 @@
+.btnFavoriteHome{
+    background-color: transparent;
+    border: none;
+    font-size: 30px;
+    color:red;
+    cursor: pointer;
+    margin-top: 45vh;
+    margin-left: -20vw;
+    z-index: 1;
+    position: relative;
+    
+}

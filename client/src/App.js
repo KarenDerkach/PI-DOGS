@@ -6,6 +6,7 @@ import Home from './components/Home';
 import CreateDogs from './components/CreateDogs';
 import Details from './components/Details';
 import NavFilter from './components/NavFilter';
+import FavoriteSite from './components/FavoriteSite';
 
 
 
@@ -23,6 +24,7 @@ function App() {
         <Route path="/home" element={<NavFilter/>}/>
         <Route path="/dogs" element={<CreateDogs />} />
         <Route path="/dogs/:id" element={<Details />} />
+        <Route path="/favorites" element={<FavoriteSite/>}/>
       </Routes>
     </React.Fragment>
   );

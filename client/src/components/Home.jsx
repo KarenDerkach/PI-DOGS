@@ -1,14 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getListTemperaments } from "../actions/index";
-import { Link } from "react-router-dom";
+import { getDogs, getListTemperaments, addFavorite } from "../actions/index";
 import CardDog from "./CardDog";
 import Pagination from "./Pagination";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import NavFilter from "./NavFilter";
 import Loading from "./Loading";
+
 import styles from "./styless/Home.module.css";
 import img from "./../img/grass0.jpg";
 
@@ -34,7 +34,12 @@ export default function Home() {
     //HOOK para ejecutar una funcion cuando el componente se monta
     dispatch(getDogs());
     dispatch(getListTemperaments());
+    dispatch(addFavorite());
   }, [dispatch]);
+
+  ///////////////////////////////////////////////////////FAVORITE ACTION//////////////////////////////////////////////
+
+ 
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
@@ -53,12 +58,9 @@ export default function Home() {
           {currentDogs.length > 0 ? (
             currentDogs.map((dog) => {
               return (
-                <Link
-                  to={`/dogs/${dog.id}`}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
                   <CardDog
                     key={dog.id}
+                    id={dog.id}
                     name={dog.name}
                     temperament={dog.temperament}
                     temperaments={dog.temperaments}
@@ -66,7 +68,6 @@ export default function Home() {
                     weight_min={dog.weight_min}
                     weight_max={dog.weight_max}
                   />
-                </Link>
               );
             })
           ) : (

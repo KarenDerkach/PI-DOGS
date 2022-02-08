@@ -1,8 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Readex+Pro&display=swap");
-.container {
+/* .container {
   margin-top: 20px;
-}
-.container .card {
+
+
+} */
+.card {
   margin-top: 200px;
   display: flex;
   flex-direction: column;
@@ -19,7 +21,7 @@
   background: #fafaf8b9;
 
 }
-.container .card:hover {
+.card:hover {
   transform: scale(1);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }

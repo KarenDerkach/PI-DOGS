@@ -1,11 +1,13 @@
 import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { getDogs, getNameDogs } from "../actions/index";
 import styles from "./styless/SearchBar.module.css";
 import swal from "sweetalert";
 //ICONS
 import { ImSearch } from "react-icons/im";
+import {MdFavorite} from "react-icons/md";
 
 function SearchBar() {
   const dispatch = useDispatch();
@@ -33,6 +35,9 @@ function SearchBar() {
 
   return (
     <div className={styles.container}>
+      <div>
+      <Link to='/favorites'> <button className={styles.btnFavorite}> <MdFavorite/> </button></Link>
+      </div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input
           type="text"

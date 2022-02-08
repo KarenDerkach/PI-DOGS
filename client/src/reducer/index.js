@@ -3,6 +3,7 @@ const initialState = {
     allDogs: [], //estado que siempre mantiene todas las rzas de perros
     temperaments: [],
     dogsDetails: [],
+    favorites: [],
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -31,7 +32,7 @@ export default function rootReducer(state = initialState, action) {
                 temperaments: action.payload
             }
         case 'FILTER_DOGS_BY_TEMPERAMENT':
-            const allDoguies = state.dogs
+            const allDoguies = state.allDogs;
             const tempDogs = allDoguies.filter(dog => {
                 if(dog.temperaments){ // info viene como [{name:..},{name:..},{name:..}]
                     const temperament = dog.temperaments.map( dog => dog.name)
@@ -103,6 +104,18 @@ export default function rootReducer(state = initialState, action) {
                 ...state,
                 dogs: action.payload === "all" ? allDogs2 : sortWeightMin
             }
+            case 'ADD_FAVORITE':
+                return{
+                    ...state,
+                    favorites : [...state.favorites, action.payload]
+                    
+                }
+            case 'REMOVE_FAVORITE':
+                return{
+                    ...state,
+                    favorites: state.favorites.filter(el => el.id !== action.payload)
+                }
+
 
         default:
             return state;
