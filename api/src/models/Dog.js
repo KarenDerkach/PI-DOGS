@@ -44,5 +44,10 @@ module.exports = (sequelize) => {
       allowNull: false,
       defaultValue: true,
     },
+    // isFavourite:{
+    //   type: DataTypes.BOOLEAN,
+    //   allowNull: false,
+    //   defaultValue: false,
+    // },
   },{timestamps: false});
 };

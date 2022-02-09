@@ -3,7 +3,7 @@ const axios = require('axios');
 //TRAIGO LOS MODELOS/ENTIDADES DE LA DB
 const { Dog, Temperament } = require('../db.js');
 //TRAIGO LA API_KEY
-const { API_KEY }= process.env;
+const { API_KEY, DATA_API }= process.env;
 
 //********************CREO FUNCIONES CONTROLADORAS QUE ME VAN A TRAER INFO DE LA DB Y DE LA API****************** */
 const getDogsDB = async () =>{
@@ -22,7 +22,7 @@ const getDogsDB = async () =>{
 
 
 const getDogsAPI = async () => {
-    const getData = await axios.get('https://api.thedogapi.com/v1/breeds', { headers: {'x-api-key': `${API_KEY}` }})
+    const getData = await axios.get(DATA_API, { headers: {'x-api-key': `${API_KEY}` }})
     const dataAPI = await getData.data.map(elem => {
            return{
             id: elem.id,
