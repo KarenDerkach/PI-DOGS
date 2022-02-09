@@ -19,10 +19,11 @@
   padding-bottom: 17px;
   box-sizing: content-box;  
   background: #fafaf8b9;
+  transition: transform 0.2s;
 
 }
 .card:hover {
-  transform: scale(1);
+  transform: scale(1.1);
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.4);
 }
 

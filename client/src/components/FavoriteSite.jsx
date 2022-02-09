@@ -1,4 +1,4 @@
-import React from "react";
+import React  from "react";
 import { removeFavorite } from "../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import styles from "./styless/Favorite.module.css";
@@ -6,20 +6,39 @@ import { MdFavorite } from "react-icons/md";
 import { MdDelete } from "react-icons/md";
 
 export default function FavoriteSite() {
+
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.favorites);
 
-  console.log(myFavorites);
+  // const deleteToLocalStorage = (items) => {
+	// 	localStorage.setItem('react-dogs-app-favourites', JSON.stringify(items));
+	// };
 
+  // useEffect(() => {
+	// const dogsFavourites = JSON.parse(
+  //   localStorage.getItem('dogs-favourites')
+
+
+
+  // )
+
+  
+	// }, []);
   function handleDelete(element) {
     dispatch(removeFavorite(element.id));
+
+
+
     alert("Remove from favourites");
   }
+
   return (
-    <div>
+    
+      <div className={styles.containerFavList}>
+        <div className={styles.containerFav}/>
       <h1 className={styles.title}> FAVORITES</h1>
       <div className={styles.box}>
-        {myFavorites?.map((element) => {
+        {myFavorites.length > 0 ? myFavorites.map((element) => {
           return (
             <div className={styles.fav} key={element.id}>
               <h2>{element.name} </h2>
@@ -41,8 +60,9 @@ export default function FavoriteSite() {
               </button>
             </div>
           );
-        })}
+        }): <h1>No se agregaron favoritos a la lista</h1>}
       </div>
-    </div>
+      </div>
+
   );
 }

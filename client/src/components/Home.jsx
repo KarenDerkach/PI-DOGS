@@ -1,7 +1,8 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getListTemperaments, addFavorite } from "../actions/index";
+import { getDogs, getListTemperaments,addFavorite } from "../actions/index";
+//import ReactPaginate from 'react-paginate'
 import CardDog from "./CardDog";
 import Pagination from "./Pagination";
 import Header from "./Header";
@@ -10,7 +11,7 @@ import NavFilter from "./NavFilter";
 import Loading from "./Loading";
 
 import styles from "./styless/Home.module.css";
-import img from "./../img/grass0.jpg";
+// import img from "./../img/grass0.jpg";
 
 export default function Home() {
   const dispatch = useDispatch(); //HOOK reemplaza mapDispatchToProps, se crea una instancia de la funcion
@@ -28,22 +29,32 @@ export default function Home() {
   //Pag 1 ----> muestra indice del array de perros: 0 - 7
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber); //Pagina actual
+
+  //-------------------------------------------------------------
+
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   useEffect(() => {
     //HOOK para ejecutar una funcion cuando el componente se monta
     dispatch(getDogs());
     dispatch(getListTemperaments());
-    dispatch(addFavorite());
+  }, [dispatch]);
+
+    useEffect(() => {
+    const dogsFavourites = JSON.parse(
+      localStorage.getItem('dogs-favourites')
+    );
+    if (dogsFavourites) {
+      dispatch(addFavorite(dogsFavourites));
+    }
+  
   }, [dispatch]);
 
   ///////////////////////////////////////////////////////FAVORITE ACTION//////////////////////////////////////////////
 
- 
-
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
-    <div>
+    <div className={styles.home}>
       <div className={styles.header}>
         <Header />
       </div>
@@ -58,16 +69,16 @@ export default function Home() {
           {currentDogs.length > 0 ? (
             currentDogs.map((dog) => {
               return (
-                  <CardDog
-                    key={dog.id}
-                    id={dog.id}
-                    name={dog.name}
-                    temperament={dog.temperament}
-                    temperaments={dog.temperaments}
-                    image={dog.image}
-                    weight_min={dog.weight_min}
-                    weight_max={dog.weight_max}
-                  />
+                <CardDog
+                  key={dog.id}
+                  id={dog.id}
+                  name={dog.name}
+                  temperament={dog.temperament}
+                  temperaments={dog.temperaments}
+                  image={dog.image}
+                  weight_min={dog.weight_min}
+                  weight_max={dog.weight_max}
+                />
               );
             })
           ) : (
@@ -85,10 +96,36 @@ export default function Home() {
             currentPage={currentPage}
           />
         </div>
-        <div>
+
+        {/* <div>
           <img src={img} alt="img bgk" className={styles.bgk} />
-        </div>
+        </div> */}
       </div>
     </div>
   );
 }
+
+/**
+ *    const [forcedPage, setForcedPage] = useState(false)
+ * 
+ * const displayBreeds = filtered.slice(pagesVisited, pagesVisited + breedsPerPage);
+
+        const pageCount = Math.ceil(filtered.length / breedsPerPage);
+
+        function changePage({ selected }) {
+            setPageNumber(selected);
+        }
+ * 
+ *  <ReactPaginate
+                    previousLabel={"Previous"}
+                    nextLabel={"Next"}
+                    pageCount={pageCount}
+                    onPageChange={changePage}
+                    containerClassName={"paginationButtons"}
+                    previousLinkClassName={"previousButton"}
+                    nextLinkClassName={"nextButton"}
+                    disabledClassName={"paginationDisabled"}
+                    activeClassName={"paginationActive"}
+                    forcePage={forcedPage ? 0 : null}
+                />
+*/

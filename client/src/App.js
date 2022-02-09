@@ -17,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/dogs" element={<Header />} />
         <Route path="/dogs/:id" element={<Header />} />
+        <Route path="favorites" element={<Header />} />
       </Routes>
       <Routes>
         <Route exact path="/" element={<LandingPage />} />

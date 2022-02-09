@@ -7,6 +7,13 @@ const axios = require('axios');
 const { Dog, Temperament } = require('../db.js');
 //TRAIGO LAS FUNCIONES CONTROLADORAS
 const {getAllDogs, getDogsAPI } = require('./Controllers')
+require('dotenv').config();
+
+
+const {
+    URL_IMG_DOGS,
+  } = process.env;
+
 
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
@@ -107,7 +114,7 @@ router.post('/dog', async (req, res) => {
     let { name, height_min, height_max, weight_min, weight_max, life_span, createInBd, temperament, image } = req.body; //datos del formulario controlado
     if(!image){
         try {
-            image = await (await axios.get('https://dog.ceo/api/breeds/image/random')).data.message;
+            image = await (await axios.get(URL_IMG_DOGS)).data.message;
         } catch (error) {
             console.log(error)
         }
@@ -121,7 +128,7 @@ router.post('/dog', async (req, res) => {
             weight_min: parseInt(weight_min),
             weight_max: parseInt(weight_max),
             life_span: life_span,
-            image: image || 'https://dog.ceo/api/breeds/image/random' ,
+            image: image || URL_IMG_DOGS ,
             createInBd: createInBd,
         })
         

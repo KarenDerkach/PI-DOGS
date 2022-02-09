@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import { getDogs, getNameDogs } from "../actions/index";
 import styles from "./styless/SearchBar.module.css";
@@ -8,11 +8,15 @@ import swal from "sweetalert";
 //ICONS
 import { ImSearch } from "react-icons/im";
 import {MdFavorite} from "react-icons/md";
+import { MdFavoriteBorder } from "react-icons/md";
 
 function SearchBar() {
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
+
+  const myFavorites = useSelector((state) => state.favorites);
+
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -36,7 +40,7 @@ function SearchBar() {
   return (
     <div className={styles.container}>
       <div>
-      <Link to='/favorites'> <button className={styles.btnFavorite}> <MdFavorite/> </button></Link>
+      <Link to='/favorites'> <button className={styles.btnFavorite}> {myFavorites.length === 0 ? <MdFavoriteBorder/> : <MdFavorite/> }</button></Link>
       </div>
       <form onSubmit={(e) => handleSubmit(e)}>
         <input

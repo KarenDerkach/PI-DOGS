@@ -1,7 +1,6 @@
 import axios from 'axios';
 import swal from 'sweetalert'
 
-
 //action qe permite renderizar todos los perros (home)
 export function getDogs(){
     return function(dispatch){
@@ -39,7 +38,7 @@ export function getNameDogs (name){
 
 
 export function postDog (info){ //recibe un objeto con toda la info del perro a crear (createDogs)
-    return  function(dispatch){
+    return  function(){
      axios.post('/dog', info)
      .then((response)=>{
          return response.data;

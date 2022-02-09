@@ -13,6 +13,7 @@
     "react-dom": "^17.0.1",
     "react-gif-loader": "^0.6.0",
     "react-icons": "^4.3.1",
+    "react-paginate": "^8.1.0",
     "react-redux": "^7.2.6",
     "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.0",

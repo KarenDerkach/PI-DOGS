@@ -3,11 +3,11 @@
   flex-direction: row;
   justify-content: space-around;
   position: relative;
-  width: 100%;
+  width:100vw;
   padding-left: 0;
   padding-right: 0;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 5vh;
 }
 
 .btnCreate {
