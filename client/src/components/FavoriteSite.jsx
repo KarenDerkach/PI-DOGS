@@ -41,7 +41,7 @@ export default function FavoriteSite() {
         {myFavorites.length > 0 ? myFavorites.map((element) => {
           return (
             <div className={styles.fav} key={element.id}>
-              <h2>{element.name} </h2>
+            
               <div>
                 {" "}
                 <img
@@ -50,7 +50,8 @@ export default function FavoriteSite() {
                   alt="woof"
                 />{" "}
               </div>
-              <MdFavorite />
+              <h2>{element.name} <MdFavorite /></h2>
+              
               <button
                 className={styles.btn}
                 onClick={() => handleDelete(element)}

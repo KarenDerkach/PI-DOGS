@@ -17,9 +17,10 @@
     z-index: -1;
 }
 .title {
-  background-color: black;
-  background: -webkit-linear-gradient(to right, #f37335, #fdc830);
-  background: linear-gradient(to right, #f37335, #fdc830);
+  /* background-color: black; */
+  /* background: -webkit-linear-gradient(to right, #f37335, #fdc830);
+  background: linear-gradient(to right, #f37335, #fdc830); */
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,9 +31,11 @@
   font-size: 2rem;
   letter-spacing: 1.7px;
   color: white;
-  text-shadow: 2px 2px #000;
+  /* text-shadow: 2px 2px #000; */
   border-radius: 30px;
-  transition: all 0.3s ease;
+
+ 
+
 }
 
 

@@ -9,6 +9,7 @@ export default function LandingPage() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
+      
         <h1 class="animate__animated  animate__tada animate__infinite	infinite">
           Welcome{" "}
         </h1>
