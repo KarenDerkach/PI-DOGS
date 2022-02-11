@@ -1,0 +1,26 @@
+.flink{
+    text-decoration: none;
+    color: rgb(253, 246, 245);
+    font-weight: bold;
+
+}
+.cfooter{
+    background: #fdc830; /*DEGRADADO*/
+    background: -webkit-linear-gradient(to right, #f37335, #fdc830);
+    background: linear-gradient(to right, #f37335, #fdc830);
+    
+    text-align: center;
+}
+
+@media screen and  (max-width: 480px){
+.cfooter{
+    /* margin-top: -5vh; */
+    margin-top:-3vh;
+    margin-bottom: 1vh;
+    text-align: center;
+    text-align: center;
+ 
+}
+
+
+}

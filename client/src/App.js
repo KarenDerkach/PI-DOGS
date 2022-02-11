@@ -7,6 +7,7 @@ import CreateDogs from './components/CreateDogs';
 import Details from './components/Details';
 import NavFilter from './components/NavFilter';
 import FavoriteSite from './components/FavoriteSite';
+import Footer from './components/Footer';
 
 
 
@@ -26,6 +27,9 @@ function App() {
         <Route path="/dogs" element={<CreateDogs />} />
         <Route path="/dogs/:id" element={<Details />} />
         <Route path="/favorites" element={<FavoriteSite/>}/>
+      </Routes>
+      <Routes>
+        <Route path="*" element={<Footer/>} />
       </Routes>
     </React.Fragment>
   );

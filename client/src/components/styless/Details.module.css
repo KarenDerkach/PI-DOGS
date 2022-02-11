@@ -128,16 +128,12 @@ text-justify: distribute;
   }
 
   .imgBkg{
-    /* height: 100vh;
-    right: 0;
-    margin-right: 0;
-    margin-top: 8vh;
-    border-radius: 0; */
+  
     display: none;
   }
   .info{
     width: 100vw;
-    height: 90vh;
+    height: 100vh;
     padding: 5;
     margin-left: 0;
     margin-top: 40vh;
@@ -146,6 +142,7 @@ text-justify: distribute;
   }
   .details{
     margin-top: 5vh;
+    
   }
   .icon{
     font-size: 1.5rem;
@@ -153,6 +150,7 @@ text-justify: distribute;
   }
   .temperament{
     flex-direction: row;
+    margin-bottom: 20vh;
   }
 
 }
