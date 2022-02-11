@@ -9,10 +9,10 @@ export default function LandingPage() {
   return (
     <div className={styles.container}>
       <div className={styles.title}>
-      
         <h1 class="animate__animated  animate__tada animate__infinite	infinite">
           Welcome{" "}
         </h1>
+        <h5 className={styles.subTitle}>Dogs World</h5>
         <Link to="/home">
           <p>
             <FaPaw className={styles.icon} />{" "}

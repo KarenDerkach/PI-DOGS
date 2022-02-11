@@ -103,3 +103,35 @@ h3 {
   font-size: large bold;
   letter-spacing: 0.1rem;
 }
+
+@media screen and (max-width: 480px) {
+.container{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 4px;
+  grid-row-gap: 6px;
+}
+
+.btnCreate{
+  width: 90vw;
+
+  
+
+}
+
+.order, .filters{
+  width: 90vw;
+
+}
+
+
+
+.orderName{
+  width: 70vw;
+
+}
+.orderWeight{
+
+}
+}

@@ -177,3 +177,32 @@ input::placeholder {
   color: #ffd819;
 }
 
+@media screen and (max-width: 480px) {
+.container{
+  display: grid;
+grid-template-columns: 1fr;
+grid-template-rows: 1fr;
+margin-top: 15vh;
+border-radius: 0;
+width: 80vw;
+margin-left: 3vw;
+
+margin-right: 0;
+}
+.form{
+  width: 100%;
+  flex-direction: column;
+
+}
+
+.imgDog{
+  display: none;
+}
+
+.btnCreate{
+  margin-left: 0;
+  width: 100%;
+}
+
+}
+

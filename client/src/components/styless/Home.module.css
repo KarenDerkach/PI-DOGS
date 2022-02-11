@@ -23,6 +23,7 @@ grid-template-rows: repeat(3, 1fr);
 grid-column-gap: 3px;
 grid-row-gap: 5px;
   z-index: 1;
+  margin: 30px;
   /* margin-left: 50px; */
 }
 
@@ -33,14 +34,17 @@ grid-row-gap: 5px;
   align-items: center;
   margin-top: 3vh;
   z-index: 1;
+
 }
 
 .navFilter, .searchBar{
   width: 100vw;
+  margin:20px
 }
 
-@media screen and (max-width: 361px) {
+@media screen and (max-width: 480px) {
   .home{
+    
     margin-left: -2vw;
   }
   .containerDogs {
@@ -49,10 +53,13 @@ grid-row-gap: 5px;
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 3px;
     grid-row-gap: 5px;
+    margin:20px
   }
   .header{
     width: 100vw;
   }
-  
+ .pagination {
+  margin: 20px;
+ }
 }
 

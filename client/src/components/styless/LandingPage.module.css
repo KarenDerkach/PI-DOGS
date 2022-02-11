@@ -17,13 +17,12 @@
     z-index: -1;
 }
 .title {
-  /* background-color: black; */
-  /* background: -webkit-linear-gradient(to right, #f37335, #fdc830);
-  background: linear-gradient(to right, #f37335, #fdc830); */
+
   text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   width: 500px;
   height: 150px;
   padding: auto;
@@ -31,10 +30,12 @@
   font-size: 2rem;
   letter-spacing: 1.7px;
   color: white;
-  /* text-shadow: 2px 2px #000; */
-  border-radius: 30px;
+  text-shadow: 2px 2px #000;
+}
+.subTitle{
 
- 
+  font-size: 40px;
+  color: #ffa500;
 
 }
 
@@ -46,58 +47,24 @@
   color: white;
   background-color: transparent;
   cursor: pointer;
-  animation: pulse;
-  animation-duration: 20s;
+
   
 }
 
 .icon:hover{
-  animation: pulse;
-  animation-duration: 20s;
-}
-
-
-/* .subtitle {
-  margin-bottom: 25%;
-  font-family: "Alfa Slab One", cursive;
-  font-size: 2.5rem;
-  color: white;
-  text-shadow: 2px 2px #000;
-  background-color: #ffa500;
-  background: -webkit-linear-gradient(to right, #f37335, #fdc830);
-  background: linear-gradient(to right, #f37335, #fdc830);
-  width: 500px;
-  padding: auto;
-  display: flex;
-  justify-content: center;
-  border-radius: 30px;
-
-} */
-/* .button {
-  top: 400px;
-  left: 600px;
-  margin-top: 50px;
-  min-width: 130px;
-  height: 40px;
-  color: #fff;
-  padding: 5px 10px;
-  font-weight: bold;
-  font-size: large;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: absolute;
-  display: inline-block;
-  outline: none;
-  border-radius: 500px;
-  border: 2px solid #fff;
-  background: transparent;
-  margin-bottom: 200px;
-  margin-right: 100px;
+   
+    color: #ffa500;
+    transform: scale(1.1);
   
 }
-.button:hover {
-  background: #fff;
-  color: #495057;
-  transform: scale3d(1.2, 1, 0.5);
-  
-} */
+
+@media screen and (max-width: 480px) {
+  .title{
+    width: 100vw;
+    font-size: 1.5rem;
+  }
+
+  .subTitle{
+    font-size: 30px;
+  }
+}

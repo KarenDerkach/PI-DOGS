@@ -30,7 +30,7 @@ function Details() {
   });
 
   return (
-    <div>
+    <div className={style.bkg}>
       {allDetails.length > 0 ? (
         <div>
           <img
@@ -77,13 +77,13 @@ function Details() {
                 <h3 className={style.icon}>
                   <GiJumpingDog />{" "}
                 </h3>
-                <p className={style.data}>
+                <div className={style.data}>
                   {allDetails[0].temperament
-                    ? allDetails[0].temperament
+                    ? <span className={style.items}>{allDetails[0].temperament}</span>
                     : allDetails[0].temperaments?.map(
-                        (elem) => elem.name + " "
+                        (elem) => <span className={style.items}>{elem.name + " "}</span>
                       )}
-                </p>
+                </div>
               </div>
               <div>
                 <img

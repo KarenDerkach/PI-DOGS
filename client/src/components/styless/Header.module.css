@@ -46,8 +46,14 @@
   align-items: center;
 }
 
-@media screen and (max-width: 361px) {
+@media screen and (max-width:480px) {
+  .container{
+    width: 95vw;
+  }
   .img {
-   
+  margin-left: 30vw;
+  }
+  .title {
+    margin-left: 12vw;
   }
 }
