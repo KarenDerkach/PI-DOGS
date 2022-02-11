@@ -36,7 +36,7 @@ export default function FavoriteSite() {
     
       <div className={styles.containerFavList}>
         <div className={styles.containerFav}/>
-      <h1 className={styles.title}> FAVORITES</h1>
+      <h1 className={styles.title}> FAVOURITES</h1>
       <div className={styles.box}>
         {myFavorites.length > 0 ? myFavorites.map((element) => {
           return (
@@ -49,19 +49,21 @@ export default function FavoriteSite() {
                   src={element.image}
                   alt="woof"
                 />{" "}
-              </div>
-              <h2>{element.name} <MdFavorite /></h2>
-              
-              <button
+                <div className={styles.containerName}>
+                <h2 className={styles.nameFav}>{element.name} <MdFavorite /></h2>
+                </div>
+                <button
                 className={styles.btn}
                 onClick={() => handleDelete(element)}
               >
                 {" "}
                 <MdDelete />
               </button>
+              </div>
+              
             </div>
           );
-        }): <h1>No se agregaron favoritos a la lista</h1>}
+        }): <h1 className={styles.favNotFound}>Not found favourites dogs in the list</h1>}
       </div>
       </div>
 
