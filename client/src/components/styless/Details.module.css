@@ -121,9 +121,10 @@ text-justify: distribute;
   }
 
   .image{
-    width: 100vw;
+    width: 90vw;
+    height: 50vh;
     right: 0;
-    margin-right: 5vw;
+    margin-right: 8vw;
     margin-top: 10vh;
   }
 
@@ -132,25 +133,25 @@ text-justify: distribute;
     display: none;
   }
   .info{
-    width: 100vw;
+    width: 90vw;
     height: 100vh;
     padding: 5;
     margin-left: 0;
-    margin-top: 40vh;
+    margin-top: 50vh;
     border-radius: 0;
     line-height: 0;
   }
-  .details{
-    margin-top: 5vh;
+  /* .details{
+    margin-top: 3vh;
     
-  }
-  .icon{
+  } */
+  /* .icon{
     font-size: 1.5rem;
     margin-right: 0;
-  }
+  } */
   .temperament{
     flex-direction: row;
-    margin-bottom: 20vh;
+    margin-bottom: 2vh;
   }
 
 }

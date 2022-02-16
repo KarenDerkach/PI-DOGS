@@ -2,13 +2,20 @@
     text-decoration: none;
     color: rgb(253, 246, 245);
     font-weight: bold;
+    
 
 }
 .cfooter{
     background: #fdc830; /*DEGRADADO*/
     background: -webkit-linear-gradient(to right, #f37335, #fdc830);
     background: linear-gradient(to right, #f37335, #fdc830);
-    
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 3vh;
+    bottom: 0;
     text-align: center;
 }
 
@@ -16,7 +23,7 @@
 .cfooter{
     /* margin-top: -5vh; */
     margin-top:-3vh;
-    margin-bottom: 1vh;
+
     text-align: center;
     text-align: center;
  
