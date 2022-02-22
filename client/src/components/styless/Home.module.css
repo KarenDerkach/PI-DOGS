@@ -63,7 +63,7 @@ grid-row-gap: 5px;
  }
 }
 
-@media screen and (min-width: 481px) {
+/* @media screen and (min-width: 481px) {
   .containerDogs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -74,9 +74,9 @@ grid-row-gap: 5px;
   }
 
 
-}
+} */
 
-@media screen and (min-width: 800px) {
+/* @media screen and (min-width: 800px) {
   .containerDogs {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -85,4 +85,4 @@ grid-row-gap: 5px;
     grid-row-gap: 5px;
     margin:20px
   }
-}
+} */
