@@ -27,7 +27,7 @@ function Details() {
     } */
   useEffect(() => {
     dispatch(getDetailsDogs(id));
-  });
+  },[dispatch, id]);
 
   return (
     <div className={style.bkg}>
@@ -48,7 +48,7 @@ function Details() {
                   {" "}
                   <GiLifeBar />{" "}
                 </h3>
-                <p>
+                <p className={style.data}>
                   {allDetails[0].life_span.length > 8
                     ? allDetails[0].life_span.slice(0, 7)
                     : allDetails[0].life_span.slice(0, 2)}{" "}
@@ -60,7 +60,7 @@ function Details() {
                   {" "}
                   <FaRulerVertical />{" "}
                 </h3>
-                <p>
+                <p className={style.data}>
                   {allDetails[0].height_min} - {allDetails[0].height_max} cm
                 </p>
               </div>
@@ -68,7 +68,7 @@ function Details() {
                 <h3 className={style.icon}>
                   <GiWeight />
                 </h3>
-                <p>
+                <p className={style.data}>
                   {allDetails[0].weight_min} - {allDetails[0].weight_max} kg
                 </p>
               </div>
@@ -77,11 +77,11 @@ function Details() {
                 <h3 className={style.icon}>
                   <GiJumpingDog />{" "}
                 </h3>
-                <div className={style.data}>
+                <div className={style.datas}>
                   {allDetails[0].temperament
                     ? <span className={style.items}>{allDetails[0].temperament}</span>
                     : allDetails[0].temperaments?.map(
-                        (elem) => <span className={style.items}>{elem.name + " "}</span>
+                        (elem) => <span className={style.items}>{ elem.name + ", "}</span>
                       )}
                 </div>
               </div>

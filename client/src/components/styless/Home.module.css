@@ -19,11 +19,11 @@
 .containerDogs {
   display: grid;
 grid-template-columns: repeat(3, 1fr);
-grid-template-rows: repeat(3, 1fr);
+grid-template-rows: repeat(1, 1fr);
 grid-column-gap: 3px;
 grid-row-gap: 5px;
   z-index: 1;
-  margin: 30px;
+  /* margin: 30px; */
   /* margin-left: 50px; */
 }
 

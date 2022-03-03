@@ -105,27 +105,4 @@ export default function Home() {
   );
 }
 
-/**
- *    const [forcedPage, setForcedPage] = useState(false)
- * 
- * const displayBreeds = filtered.slice(pagesVisited, pagesVisited + breedsPerPage);
 
-        const pageCount = Math.ceil(filtered.length / breedsPerPage);
-
-        function changePage({ selected }) {
-            setPageNumber(selected);
-        }
- * 
- *  <ReactPaginate
-                    previousLabel={"Previous"}
-                    nextLabel={"Next"}
-                    pageCount={pageCount}
-                    onPageChange={changePage}
-                    containerClassName={"paginationButtons"}
-                    previousLinkClassName={"previousButton"}
-                    nextLinkClassName={"nextButton"}
-                    disabledClassName={"paginationDisabled"}
-                    activeClassName={"paginationActive"}
-                    forcePage={forcedPage ? 0 : null}
-                />
-*/

@@ -13,11 +13,11 @@ function CreateDogs() {
     const dispatch = useDispatch()  //activo el dispatch para traerme las actions
     const navigate = useNavigate() // para redireccionar
     const temperaments = useSelector(state => state.temperaments)//me traigo el estado global de temperamentos
-     
+    const [change, setChange] = useState(false);
 
     useEffect(() => {  //que renderize la lista de temperamentos
         dispatch(getListTemperaments())
-    }, [dispatch])    
+    }, [dispatch,change])    
 
     const [input, setInput] = useState({
         name: '',
@@ -33,6 +33,7 @@ function CreateDogs() {
 
     //-----------------------------------VALIDATION ERRORS---------------------------------------
     const validacion = function(input) {
+      console.log(input)
       const error = {}
       if (!input.name) {
         error.name = 'Name is required';
@@ -56,10 +57,10 @@ function CreateDogs() {
         error.weight_max = 'Height Max is required';
       }
 
-      if(input.height_min > input.height_max) {
-        error.height_min = 'Height Min must be less than Height Max';
+      if(  Number(input.height_max) < Number(input.height_min)) {
+        error.height_max = 'Height Min must be less than Height Max';
       }
-      if(input.weight_min > input.weight_max) {
+      if(Number(input.weight_min) > Number(input.weight_max)) {
         error.weight_min = 'Weight Min must be less than Weight Max';
       }
       if(input.life_span < 0) {
@@ -120,6 +121,7 @@ function CreateDogs() {
         image: "",
         temperament: [],
       });
+      setChange(!change)
       navigate('/home');
       }else {
         swal({
@@ -161,7 +163,7 @@ function CreateDogs() {
             <div className={style.font}>
           <label>Min:</label>
           <input
-            type="text"
+            type="number"
             name="weight_min"
             value={input.weight_min}
             placeholder= "2"
@@ -174,7 +176,7 @@ function CreateDogs() {
             <div className={style.font}>
           <label>Max</label>
           <input
-            type="text"
+            type="number"
             name="weight_max"
             value={input.weight_max}
             placeholder= "5"

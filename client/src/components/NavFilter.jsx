@@ -17,11 +17,13 @@ function NavFilter() {
   const dispatch = useDispatch();
   const temperaments = useSelector((state) => state.temperaments); //estado global de temperamentos
   const [, setCurrentPage] = useState(1)
+ 
 
   useEffect(() => {
     //que renderize la lista de temperamentos
     dispatch(getListTemperaments());
     dispatch(getDogs());
+
   }, [dispatch]);
 
   //////////////////////////////////////////////////////EVENTS////////////////////////////////////////////////////////////////////
@@ -29,7 +31,7 @@ function NavFilter() {
   function handlefilterDogsByCreated(e) {
     e.preventDefault();
     dispatch(filterDogsByCreated(e.target.value));
-    setCurrentPage(1);
+
   }
 
   //----------------------------------------TEMPERAMENTS----------------------------------------

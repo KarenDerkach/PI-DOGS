@@ -88,12 +88,12 @@ width: 100%;
 text-align: center;
 text-align-last: center;
 text-justify: distribute;
-
-
-
-
 }
- .data {
+.data{
+  font-size: medium;
+  padding: 10px;
+}
+ .datas {
   color: #f37335;
   display: flex;
   justify-content: space-between;
