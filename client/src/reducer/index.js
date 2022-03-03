@@ -3,7 +3,7 @@ const initialState = {
     allDogs: [], //estado que siempre mantiene todas las rzas de perros
     temperaments: [],
     dogsDetails: [],
-    favorites: [],
+    favorites: []
 }
 
 export default function rootReducer(state = initialState, action) {
@@ -63,10 +63,14 @@ export default function rootReducer(state = initialState, action) {
 
         case 'FILTER_DOGS_BY_CREATED':
             const allDogsAPI = state.allDogs
-            const createdDogs = action.payload === 'created' ? allDogsAPI.filter(dog => dog.createInBd) : allDogsAPI.filter(dog => !dog.createInBd)
+            console.log(allDogsAPI)
+            const creados = allDogsAPI.createInBd !== null? allDogsAPI.filter(dog => dog.createInBd) : "dogs no creados"
+            const dogsAPI =  allDogsAPI.filter(dog => !dog.createInBd)
+            const dogs = action.payload === 'created' ? creados : dogsAPI
             return {
                 ...state,
-                dogs: action.payload === 'all' ? allDogsAPI : createdDogs
+           
+                dogs: action.payload === 'all' ? allDogsAPI : dogs
             }
 
         case 'ORDER_BY_NAME':

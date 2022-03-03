@@ -9,23 +9,22 @@ import swal from 'sweetalert'
 export default function FavoriteSite() {
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.favorites);
+  // const [favourite , setFavourite] = useState([myFavorites], ()=>{
+  //   const data = localStorage.getItem( 'dogs-favourites');
+  //   return data ? JSON.parse(data) : [];
+  // })
 
-  // const deleteToLocalStorage = (items) => {
-  // 	localStorage.setItem('react-dogs-app-favourites', JSON.stringify(items));
-  // };
 
-  // useEffect(() => {
-  // const dogsFavourites = JSON.parse(
-  //   localStorage.getItem('dogs-favourites')
+  // useEffect(()=>{
+  //   localStorage.setItem( 'dogs-favourites', JSON.stringify(myFavorites) );
+  // }, [myFavorites, favourite])
 
-  // )
-
-  // }, []);
   function handleDelete(element) {
     dispatch(removeFavorite(element.id));
+    // setFavourite(myFavorites);
     swal("Remove from favorites", {
       buttons: false,
-      timer: 3000,
+      timer: 2000,
     });
   }
 
@@ -34,7 +33,7 @@ export default function FavoriteSite() {
       <h1 className={styles.title}> FAVOURITES</h1>
       <div className={styles.box}>
         {myFavorites.length > 0 ? (
-          myFavorites.map((element) => {
+         myFavorites.map((element) => {
             return (
               <div className={styles.fav} key={element.id}>
                 <img className={styles.imgfav} src={element.image} alt="woof" />{" "}
