@@ -17,6 +17,7 @@ function CreateDogs() {
 
     useEffect(() => {  //que renderize la lista de temperamentos
         dispatch(getListTemperaments())
+        dispatch(postDog())
     }, [dispatch,change])    
 
     const [input, setInput] = useState({

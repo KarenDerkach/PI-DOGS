@@ -1,19 +1,16 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDogs, getListTemperaments,addFavorite } from "../actions/index";
-//import ReactPaginate from 'react-paginate'
+import { getDogs, getListTemperaments } from "../actions/index";
 import CardDog from "./CardDog";
-import Pagination from "./Pagination";
 import Header from "./Header";
 import SearchBar from "./SearchBar";
 import NavFilter from "./NavFilter";
 import Loading from "./Loading";
-
 import styles from "./styless/Home.module.css";
-// import img from "./../img/grass0.jpg";
 
 export default function Home() {
+  
   const dispatch = useDispatch(); //HOOK reemplaza mapDispatchToProps, se crea una instancia de la funcion
   //////////////////////////////////////////////ESTADOS GLOBALES//////////////////////////////////////////////////////////////////
   const allDogs = useSelector((state) => state.dogs); //HOOK reemplaza mapStateToProps
@@ -25,12 +22,25 @@ export default function Home() {
   const numberOfLastDog = currentPage * dogsPerPage; //Indice del ultimo perro de la pagina actual osea 8
   const numberOfFirstDog = numberOfLastDog - dogsPerPage; //Indice del primer perro de la pagina actual osea 0
   const currentDogs = allDogs.slice(numberOfFirstDog, numberOfLastDog); //Perros de la pagina actual, con slice selecciono los perros de la pagina actual q seran los que tienen indice 0 -1 - 2 - 3 - 4 - 5 - 6 - 7 en total 8 personajes
-
   //Pag 1 ----> muestra indice del array de perros: 0 - 7
 
-  const paginate = (pageNumber) => setCurrentPage(pageNumber); //Pagina actual
+  
+  const totalPages = Math.ceil(allDogs.length / dogsPerPage); //redondea al numero entero mas cercano,p/ arriba
 
-  //-------------------------------------------------------------
+  const paginate = (number) => { 
+  if(number + currentPage > totalPages) return;
+  if(number + currentPage < 1) return;
+  setCurrentPage(number + currentPage);
+  }
+
+  const OnFirstPage = () => {
+    setCurrentPage(1);
+  }  
+
+  const OnLastPage = () => {
+    setCurrentPage(totalPages);
+  }
+
 
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -40,17 +50,6 @@ export default function Home() {
     dispatch(getListTemperaments());
   }, [dispatch]);
 
-    useEffect(() => {
-    const dogsFavourites = JSON.parse(
-      localStorage.getItem('dogs-favourites')
-    );
-    if (dogsFavourites) {
-      dispatch(addFavorite(dogsFavourites));
-    }
-  
-  }, [dispatch]);
-
-  ///////////////////////////////////////////////////////FAVORITE ACTION//////////////////////////////////////////////
 
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   return (
@@ -64,6 +63,17 @@ export default function Home() {
       <div className={styles.navFilter}>
         <NavFilter />
       </div>
+      {/* Paginado */}
+        <div className={styles.pagination}>
+           <section className={styles.containerPage}>
+             <button className={styles.bntPages} onClick={OnFirstPage}>Firts</button>
+           <button className={styles.bntPages} onClick={()=>paginate(-1)}>Prev</button>
+           <span className={styles.currentNumber}>{currentPage}</span>
+          <button className={styles.bntPages} onClick={()=>paginate(1)}>Next</button>
+          <button className={styles.bntPages} onClick={OnLastPage}>Last</button>
+          </section>
+        </div>
+        {/* renderizado de cartas */}
       <div>
         <div className={styles.containerDogs}>
           {currentDogs.length > 0 ? (
@@ -87,19 +97,6 @@ export default function Home() {
             </div>
           )}
         </div>
-
-        <div className={styles.pagination}>
-          <Pagination
-            dogsPerPage={dogsPerPage}
-            allDogs={allDogs.length}
-            paginate={paginate}
-            currentPage={currentPage}
-          />
-        </div>
-
-        {/* <div>
-          <img src={img} alt="img bgk" className={styles.bgk} />
-        </div> */}
       </div>
     </div>
   );
